@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 //1.将数组A中的内容和数组B中的内容进行交换。（数组一样大）
+//第一种方法
 //#include<stdio.h>
 //int main()
 //{
@@ -30,7 +31,33 @@
 //	}
 //	return 0;
 //}
-//2.计算1/1-1/2+1/3-1/4+1/5 …… + 1/99 - 1/100 的值。
+//第二种方法
+//#include<stdio.h>
+//int main()
+//{
+//	int arr1[] = { 1, 2, 3, 4, 5 };
+//	int arr2[] = { 6, 7, 8, 9, 0 };
+//	int a = 0;
+//	int b = 0;
+//	int sz = sizeof(arr1) / sizeof(arr1[0]);
+//	for (a = 0; a <sz; a++)
+//	{
+//		b = arr1[a];
+//		arr1[a] = arr2[a];
+//		arr2[a] = b;
+//	}
+//	for (a = 0; a < sz; a++)
+//	{
+//		printf("%d ",arr1[a]);
+//	}
+//	 printf("\n");
+//	for (a = 0; a < sz; a++)
+//	{
+//		printf("%d ", arr2[a]);
+//	}
+//	return 0;
+//}
+//2.计算1/1-1/2+1/3-1/4+1/5 +…… + 1/99 - 1/100 的值。
 //#include<stdio.h>
 //#include<math.h>
 //int main()
