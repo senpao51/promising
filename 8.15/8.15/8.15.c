@@ -78,32 +78,23 @@
 //实现empty（）清空数组、
 //实现reverse（）函数完成数组元素的逆置。
 //要求：自己设计函数的参数，返回值。
-//#include <stdio.h>
-//int init(int arr[],int arr3[],int x)
-//{
-//	int i = 0;
-//	int *p1 = arr;
-//	int *p2 = arr3;
-//	for (i = 0; i < x; i++)
-//	{
-//		arr[i] = arr3[i];
-//	}
-//	return arr;
-//}
-//int main()
-//{
-//	int arr1[] = {6,7,8,9,0};
-//	int arr2[] = {1,2,3,4,5}
-//	int a = 0;
-//	int b = 0;
-//	int sz = sizeof(arr1) / sizeof(arr1[0]);
-//	a = init(arr1,arr2,sz);
-//	if (1)
-//	{
-//		printf("%d",arr1[b]);
-//	}
-//	return 0;
-//}
+#include <stdio.h>
+void init(int arr[], int sz)
+{
+	int x = 0;
+	for (x = 0; x < sz; x++)
+	{
+	* arr[x] = 0;
+	}
+	printf("%d",* arr[x]);
+}
+int main()
+{
+	int arr[] = { 1, 2, 3, 4, 5 };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	init(arr,sz);
+	return 0;
+}
 //5.实现一个函数，判断一个数是不是素数。
 //#include <stdio.h>
 //#include<math.h>
@@ -132,38 +123,38 @@
 //	return 0;
 //}
 //找数字
-#include <stdio.h>
-int find(int arr[], int a, int b)
-{
-	int left = 0;
-	int right = b - 1;
-	int mid = 0;
-	while (left <= right)
-	{
-		mid = left + (right - left) / 2;
-		if (a> arr[mid])
-			left = mid + 1;
-		else if(a < arr[mid])
-			right = mid - 1;
-		else
-			return mid;
-	}
-	return -1;
-}
-int main()
-{
-	int arr[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-	int input = 0;
-	int sz = sizeof(arr) / sizeof(arr[0]);
-	scanf("%d",&input);
-	int num = find(arr,input,sz);
-	if (-1 == num)
-	{
-		printf("没找到\n");
-	}
-	else
-	{
-		printf("找到了，下标是%d",num);
-	}
-	return 0;
-}
+//#include <stdio.h>
+//int find(int arr[], int a, int b)
+//{
+//	int left = 0;
+//	int right = b - 1;
+//	int mid = 0;
+//	while (left <= right)
+//	{
+//		mid = left + (right - left) / 2;
+//		if (a> arr[mid])
+//			left = mid + 1;
+//		else if(a < arr[mid])
+//			right = mid - 1;
+//		else
+//			return mid;
+//	}
+//	return -1;
+//}
+//int main()
+//{
+//	int arr[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+//	int input = 0;
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	scanf("%d",&input);
+//	int num = find(arr,input,sz);
+//	if (-1 == num)
+//	{
+//		printf("没找到\n");
+//	}
+//	else
+//	{
+//		printf("找到了，下标是%d",num);
+//	}
+//	return 0;
+//}
