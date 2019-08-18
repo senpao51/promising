@@ -31,7 +31,7 @@ void game()
 		}
 		else if (ret = 'c')
 		{
-
+			;
 		}
 		else
 		{
