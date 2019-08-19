@@ -91,39 +91,111 @@
 //	printf("%s %d %s",p.name,p.age,p.sex);
 //	return 0;
 //}
-//写一个递归函数DigitSum(n)，输入一个非负整数，返回组成它的数字之和，
+//3.写一个递归函数DigitSum(n)，输入一个非负整数，返回组成它的数字之和，
 //例如，调用DigitSum(1729)，则应该返回1 + 7 + 2 + 9，它的和是19
-#include <stdio.h>
-int DigitSum(int num)
-{
-	if (num > 9)
-	{
-		int i = 0;
-		i = num % 10;
-		return i + DigitSum(num / 10);
-	}
-	else
-	{
-		return num;
-	}
-}
-int main()
-{
-	int input = 0;
-	int ret = 0;
-	scanf("%d",&input);
-	ret = DigitSum(input);
-	printf("%d",ret);
-	return 0;
-}
-//编写一个函数 reverse_string(char * string)（递归实现）
+//#include <stdio.h>
+//int DigitSum(int num)
+//{
+//	if (num > 9)
+//	{
+//		int i = 0;
+//		i = num % 10;
+//		return i + DigitSum(num / 10);
+//	}
+//	else
+//	{
+//		return num;
+//	}
+//}
+//int main()
+//{
+//	int input = 0;
+//	int ret = 0;
+//	scanf("%d",&input);
+//	ret = DigitSum(input);
+//	printf("%d",ret);
+//	return 0;
+//}
+//4.编写一个函数 reverse_string(char * string)（递归实现）
 //实现：将参数字符串中的字符反向排列。
 //要求：不能使用C函数库中的字符串操作函数。
-#include <stdio.h>
-int main()
-{
-	char arr[] = { 0 };
-	char input = 0;
-	scanf("%s",&input);
-	return 0;
-}
+//#include <stdio.h>
+//reverse_string(char * string,int sz)
+//{
+//	int i = 0;
+//	int tmp = 0;
+//	if (sz>0)
+//	{
+//		for (i = 0; i < sz-1; i++)
+//		{
+//			tmp = string[i+1];
+//			string[i + 1] = string[i];
+//			string[i] = tmp;
+//		}
+//		sz--;
+//		reverse_string(string, sz);
+//	}
+//}
+//int main()
+//{
+//	char arr[] = "abcdef";
+//	int sz = 0;
+//	int a = 0;
+//	sz = sizeof(arr) / sizeof(arr[0])-1;
+//	reverse_string(arr,sz);
+//	for (a = 0; a < 6; a++)
+//	{
+//		printf("%c ",arr[a]);
+//	}
+//	return 0;
+//}
+
+//5.递归和非递归分别实现strlen
+//非递归
+//#include <stdio.h>
+//int MyStrlen(char arr[])
+//{
+//	int i = 0;
+//	int count = 0;
+//	while (1)
+//	{
+//		if (arr[i]!= '\0')
+//		{
+//			count++;
+//		    i++;
+//		}
+//		else
+//		{
+//			break;
+//		}
+//	}
+//	return count;
+//}
+//int main()
+//{
+//	char arr[] = "abcdef";
+//	int ret = 0;
+//	ret = MyStrlen(arr);
+//	printf("%d ",ret);
+//	return 0;
+//}
+//递归
+//#include <stdio.h>
+//int MyStrlen(char* p)
+//{
+//	int i = 1;
+//	if (*p == '\0')
+//		return 0;
+//	else
+//	{
+//		return 1 + MyStrlen(p+i);
+//	}
+//}
+//int main()
+//{
+//	char arr[] = "abcdef";
+//	int ret = 0;
+//	ret = MyStrlen(arr);
+//	printf("%d ",ret);
+//	return 0;
+//}
