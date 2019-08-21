@@ -98,9 +98,7 @@
 //{
 //	if (num > 9)
 //	{
-//		int i = 0;
-//		i = num % 10;
-//		return i + DigitSum(num / 10);
+//		return num % 10 + DigitSum(num / 10);
 //	}
 //	else
 //	{
@@ -149,7 +147,7 @@
 //	}
 //	return 0;
 //}
-
+//
 //5.递归和非递归分别实现strlen
 //非递归
 //#include <stdio.h>
@@ -183,12 +181,11 @@
 //#include <stdio.h>
 //int MyStrlen(char* p)
 //{
-//	int i = 1;
 //	if (*p == '\0')
 //		return 0;
 //	else
 //	{
-//		return 1 + MyStrlen(p+i);
+//		return 1 + MyStrlen(p+1);
 //	}
 //}
 //int main()
@@ -197,5 +194,51 @@
 //	int ret = 0;
 //	ret = MyStrlen(arr);
 //	printf("%d ",ret);
+//	return 0;
+//}
+//
+//6.递归和非递归分别实现求n的阶乘
+//递归
+//#include <stdio.h>
+//int JieCheng(int n)
+//{
+//	if (n <= 1)
+//	{
+//		return 1;
+//	}
+//	else
+//	{
+//		return n*JieCheng(n - 1);
+//	}
+//}
+//int main()
+//{
+//	int input = 0;
+//	scanf("%d",&input);
+//	int ret = JieCheng(input);
+//	printf("%d\n",ret);
+//	return 0;
+//}
+//非递归
+//
+//7.递归方式实现打印一个整数的每一位
+//#include<stdio.h>
+//void Print(int n)
+//{
+//	if (n <= 9)
+//	{
+//		printf("%d ", n);
+//	}
+//	else
+//	{
+//		printf("%d ",n%10);
+//		Print(n/10);
+//	}
+//}
+//int main()
+//{ 
+//	int input = 0;
+//	scanf("%d",&input);
+//	Print(input);
 //	return 0;
 //}
