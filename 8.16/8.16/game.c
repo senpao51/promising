@@ -89,13 +89,13 @@ char IsWin(char board[ROW][COL], int row, int col)
 	int count = 0;
 	for (i = 0; i < row; i++)
 	{
-		if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][1] == '*')
-			return '*';
+		if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][1] != ' ')
+			return board[i][1];
 	}
 	for (j = 0; j < col; j++)
 	{
-		if (board[0][j] = board[1][j] && board[1][j] == board[2][j] && board[1][j] == '*')
-			return '*';
+		if (board[0][j] = board[1][j] && board[1][j] == board[2][j] && board[1][j] != ' ')
+			return board[1][j];
 	}
 	if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[1][1] != ' ')
 		return board[1][1];
@@ -112,6 +112,8 @@ char IsWin(char board[ROW][COL], int row, int col)
 		}
 	}
 	if (count == 9)
+	{
 		return 'p';
+	}
 	return 'c';
 }

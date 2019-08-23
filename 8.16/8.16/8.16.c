@@ -16,8 +16,10 @@ void game()
 	{
 		PlayerMove(board, ROW, COL);
 		DisplayBoard(board, ROW, COL);
+		IsWin(board, ROW, COL);
 		ComputerMove(board, ROW, COL);
 		DisplayBoard(board, ROW, COL);
+		IsWin(board, ROW, COL);
 		char ret = IsWin(board, ROW, COL);
 		if (ret == '*')
 		{

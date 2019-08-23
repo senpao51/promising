@@ -38,7 +38,7 @@
 //	}
 //	return 0;
 //}
-
+//
 //
 //#include <stdio.h>
 //struct Stu
@@ -78,30 +78,48 @@
 //D说：C在胡说
 //已知3个人说了真话，1个人说的是假话。
 //现在请根据这些信息，写一个程序来确定到底谁是凶手。
-
-#include <stdio.h>
-int main()
-{
-	int A = 0;
-	int B = 0;
-	int C = 0;
-	int D = 0;
-	for (A = 0; A < 2; A++)
-	{
-		for (B = 0; B < 2; B++)
-		{
-			for (C = 0; C < 2; C++)
-			{
-				for (D = 0; D < 2; D++)
-				{
-					if ((A != 1) + (C == 1) + (D == 1) + (D != 1) == 3)
-					{
-						printf("%d %d %d %d",A,B,C,D);
-					}
-				}
-			}
-		}
-	}
-	return 0;
-}
-
+//
+//#include <stdio.h>
+//int main()
+//{
+//	char killer = '0';
+//	for (killer = 'A'; killer <= 'D'; killer++)
+//	{
+//		if ((killer != 'A') + (killer == 'C') + (killer == 'D') + (killer != 'D') == 3)
+//		{
+//			printf("%c\n",killer);
+//		}
+//	}
+//	return 0;
+//}
+//3.在屏幕上打印杨辉三角。
+//1
+//1 1
+//1 2 1
+//1 3 3 1
+//
+//#include <stdio.h>
+//void Print(int arr[5][5])
+//{
+//	int i = 0;
+//	for (i = 0; i < 5; i++)
+//	{
+//		int j = 0;
+//		for (j = 0; j <=i; j++)
+//		{
+//			if (0 == j || i == j)
+//			{
+//				arr[i][j] = 1;
+//			}
+//			arr[i+1][j+1]=arr[i][j] + arr[i][j + 1];
+//			printf("%d ",arr[i][j]);
+//		}
+//		printf("\n");
+//	}
+//}
+//int main()
+//{
+//	int arr[5][5] = { 0 };
+//	Print(arr);
+//	return 0;
+//}
