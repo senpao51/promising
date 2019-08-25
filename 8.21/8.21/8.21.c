@@ -45,10 +45,10 @@
 //int Find(int arr[], int sz)
 //{
 //	int i = 0;
-//	int tmp = arr[0] ^ arr[1];
-//	for (i = 2; i < sz; i++)
+//	int tmp = 0;
+//	for (i = 1; i < sz; i++)
 //	{
-//		tmp = tmp^arr[i];
+//		tmp^=arr[i];
 //	}
 //	return tmp;
 //}
