@@ -9,6 +9,7 @@ void menu()
 }
 void game()
 {
+	char ret = 0;
 	char board[ROW][COL] = { 0 };
 	InitBoard(board, ROW, COL);
 	DisplayBoard(board, ROW, COL);
@@ -16,30 +17,27 @@ void game()
 	{
 		PlayerMove(board, ROW, COL);
 		DisplayBoard(board, ROW, COL);
-		IsWin(board, ROW, COL);
+		ret = IsWin(board, ROW, COL);
+		if (ret != 'c')
+			break;
 		ComputerMove(board, ROW, COL);
 		DisplayBoard(board, ROW, COL);
 		IsWin(board, ROW, COL);
-		char ret = IsWin(board, ROW, COL);
-		if (ret == '*')
-		{
-			printf("玩家赢\n");
+		ret = IsWin(board, ROW, COL);
+		if (ret != 'c')
 			break;
 		}
-		else if (ret == '#')
-		{
-			printf("电脑赢\n");
-			break;
-		}
-		else if (ret = 'c')
-		{
-			;
-		}
-		else
-		{
-			printf("平局\n");
-			break;
-		}
+	if (ret == '*')
+	{
+		printf("玩家赢\n");
+	}
+	else if (ret == '#')
+	{
+		printf("电脑赢\n");
+	}
+	else if (ret == 'p')
+	{
+		printf("平局\n");
 	}
 }
 int main()
