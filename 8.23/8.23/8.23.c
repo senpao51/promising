@@ -1,34 +1,34 @@
 #define _CRT_SECURE_NO_WARNINGS 1
-//1.实现一个函数，可以左旋字符串中的k个字符。
-//ABCD左旋一个字符得到BCDA
-//ABCD左旋两个字符得到CDAB
-//#include <stdio.h>
-//#include <string.h>
-//void left_move(char arr[], int k)
-//{
-//	int len = strlen(arr);
-//	int j = 0;
-//	for (j = 0; j < k; j++)
-//	{
-//		int i = 0;
-//		char ch = arr[0];
-//		for (i = 0; i < len - 1; i++)
-//		{
-//			arr[i] = arr[i + 1];
-//		}
-//		arr[len - 1] = ch;
-//	}
-//}
-//int main()
-//{
-//	char arr[] = "abcdef";
-//	left_move(arr, 2);
-//	printf("%s\n",arr);
-//	return 0;
-//}
+1.实现一个函数，可以左旋字符串中的k个字符。
+ABCD左旋一个字符得到BCDA
+ABCD左旋两个字符得到CDAB
+#include <stdio.h>
+#include <string.h>
+void left_move(char arr[], int k)
+{
+	int len = strlen(arr);
+	int j = 0;
+	for (j = 0; j < k; j++)
+	{
+		int i = 0;
+		char ch = arr[0];
+		for (i = 0; i < len - 1; i++)
+		{
+			arr[i] = arr[i + 1];
+		}
+		arr[len - 1] = ch;
+	}
+}
+int main()
+{
+	char arr[] = "abcdef";
+	left_move(arr, 2);
+	printf("%s\n",arr);
+	return 0;
+}
 
-//2.判断一个字符串是否为另外一个字符串旋转之后的字符串。
-//例如：给定s1 = AABCD和s2 = BCDAA，返回1，给定s1 = abcd和s2 = ACBD，返回0.
+2.判断一个字符串是否为另外一个字符串旋转之后的字符串。
+例如：给定s1 = AABCD和s2 = BCDAA，返回1，给定s1 = abcd和s2 = ACBD，返回0.
 #include <stdio.h>
 #include <string.h>
 int is_left_move(char arr1[], char arr2[])

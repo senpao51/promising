@@ -174,35 +174,59 @@
 //	return 0;
 //}
 //7. µœ÷memmove
-#include <stdio.h>
-#include <assert.h>
-void* my_memmove(void* dest, const void* sou, size_t count)
+//#include <stdio.h>
+//#include <assert.h>
+//void* my_memmove(void* dest, const void* sou, size_t count)
+//{
+//	char* ret = dest;
+//	assert(dest&&sou);
+//	if (dest < sou)
+//	{
+//		while (count--)
+//		{
+//			*(char*)dest = *(char*)sou;
+//			((char*)dest)++;
+//			((char*)sou)++;
+//		}
+//	}
+//	else
+//	{
+//		while (count--)
+//		{
+//			*((char*)dest + count - 1) = *((char*)sou + count - 1);
+//		}
+//	}
+//	return ret;
+//}
+//int main()
+//{
+//	char arr1[10] = "abcdef";
+//	char arr2[10] = {0};
+//	char* ret = my_memmove(arr2, arr1, 5* sizeof(char));
+//	printf("%s\n",ret);
+//	return 0;
+//}
+#include <string.h>
+#include <stdlib.h>
+int cmp_stu_by_name(const void*e1, const void*e2)
 {
-	char* ret = dest;
-	assert(dest&&sou);
-	if (dest < sou)
-	{
-		while (count--)
-		{
-			*(char*)dest = *(char*)sou;
-			((char*)dest)++;
-			((char*)sou)++;
-		}
-	}
-	else
-	{
-		while (count--)
-		{
-			*((char*)dest + count - 1) = *((char*)sou + count - 1);
-		}
-	}
-	return ret;
+	return strcmp(((struct Stu*)e1)->name, ((struct Stu*)e2)->name);
+}
+
+struct Stu
+{
+	char name[20];
+	short age;
+};
+void Test2()
+{
+	struct Stu arr[] = { { "zhangsan", 20 }, { "lisi", 50 }, { "wangwu", 15 } };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	qsort(arr, sz, sizeof(arr[0]), cmp_stu_by_name);
+
 }
 int main()
 {
-	char arr1[10] = "abcdef";
-	char arr2[10] = {0};
-	char* ret = my_memmove(arr2, arr1, 5* sizeof(char));
-	printf("%s\n",ret);
+	Test2();
 	return 0;
 }
