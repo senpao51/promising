@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include "contact.h"
-void menu()
+void MainMenu()
 {
 	printf("*****************************\n");
 	printf("**   1.add       2.del     **\n");
@@ -17,7 +17,7 @@ int main()
 	InitContact(&con);
 	do
 	{
-		menu();
+		MainMenu();
 		printf("ÇëÑ¡Ôñ\n");
 		scanf("%d", &input);
 		switch (input)
@@ -42,7 +42,7 @@ int main()
 			break;
 		case EXIT:
 			SaveContact(&con);
-			DestoryContact(&con);
+			DestroyContact(&con);
 			printf("ÍË³ö\n");
 			break;
 		default:

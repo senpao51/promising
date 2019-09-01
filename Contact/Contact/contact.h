@@ -6,14 +6,14 @@
 
 
 #define INIT_NUM 3
-#define name_max 15
-#define sex_max 5
-#define tel_max 12
-#define address_max 20
-#define contact_max 1000
+#define NAME_MAX 15
+#define SEX_MAX 5
+#define TEL_MAX 12
+#define ADDR_MAX 20
+#define CONTACT_MAX 1000
 
 
-enum choice
+enum mainchoice
 {
 	EXIT,
 	ADD,
@@ -24,19 +24,28 @@ enum choice
 	SEARCH
 };
 
+enum sortchoice
+{
+	CANCEL,
+	NAME,
+	SEX,
+	AGE,
+	TEL,
+	ADDR
+};
 typedef struct PeoInfo
 {
-	char name[name_max];
-	char sex[sex_max];
+	char name[NAME_MAX];
+	char sex[SEX_MAX];
 	short age;
-	char tel[tel_max];
-	char address[address_max];
+	char tel[TEL_MAX];
+	char address[ADDR_MAX];
 
 }PeoInfo;
 
 //typedef struct Contact
 //{
-//	PeoInfo data[contact_max];
+//	PeoInfo data[CONTACT_MAX];
 //	int sz;
 //}Contact;
 
@@ -55,9 +64,12 @@ void DelContact(Contact* pcon);
 void ModifyContact(Contact* pcon);
 void SearchContact(Contact* pcon);
 void SortContact(Contact* pcon);
-void DestoryContact(Contact* pcon);
+void CheckContact(Contact* pcon);
+void DestroyContact(Contact* pcon);
 void SaveContact(Contact* pcon);
-void LoadContact(Contact*pcon);
+void LoadContact(Contact* pcon);
+
+
 
 
 
