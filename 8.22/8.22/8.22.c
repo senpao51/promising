@@ -94,46 +94,93 @@
 //4 5 6
 //7 8 9
 #include <stdio.h>
-void Find(int arr[3][3], int* prow, int* pcol, int k)
-{
-	int x = 0;
-	int y = *pcol - 1;
-	while (x<=*prow-1&&y>=0)
-	{
-		if (arr[x][y] > k)
-		{
-			y--;
-		}
-		else if (arr[x][y] < k)
-		{
-			x++;
-		}
-		else
-		{
-			*prow = x;
-			*pcol = y;
-		}
-	}
-	if (x == *prow-1&&y == 0)
-	{
-		*prow = -1;
-		*pcol = -1;
-	}
-}
-int main()
-{
-	int arr[3][3] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-	int row = 3;
-	int col = 3;
-	Find(arr, &row, &col, 7);
-	if (-1 == row&&-1 == col)
-	{
-		printf("没找到\n");
-	}
-	else
-	{
-		printf("找到了,下标是%d %d",row,col);
-	}
+//void Find(int arr[3][3], int* prow, int* pcol, int k)
+//{
+//	int x = 0;
+//	int y = *pcol - 1;
+//	while (x<=*prow-1&&y>=0)
+//	{
+//		if (arr[x][y] > k)
+//		{
+//			y--;
+//		}
+//		else if (arr[x][y] < k)
+//		{
+//			x++;
+//		}
+//		else
+//		{
+//			*prow = x;
+//			*pcol = y;
+//			return;
+//		}
+//	}
+//		*prow = -1;
+//		*pcol = -1;
+//		return;
+//}
+//int main()
+//{
+//	int arr[3][3] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+//	int row = 3;
+//	int col = 3;
+//	int input = 0;
+//	printf("请输入要查找的数字\n");
+//	scanf("%d",&input);
+//	Find(arr, &row, &col, input);
+//	if (-1 == row&&-1 == col)
+//	{
+//		printf("没找到\n");
+//	}
+//	else
+//	{
+//		printf("找到了,下标是%d %d",row,col);
+//	}
+//	return 0;
+//}
 
-	return 0;
-}
+
+//void Find(int arr[3][3], int* prow, int* pcol, int input)
+//{
+//	int x = *prow - 1;
+//	int y = 0;
+//	while (x>=0&&y<=*pcol -1)
+//	{
+//		if (arr[x][y] > input)
+//		{
+//			x--;
+//		}
+//		else if (arr[x][y] < input)
+//		{
+//			y++;
+//		}
+//		else
+//		{
+//			*prow = x;
+//			*pcol = y;
+//			return;
+//		}
+//	}
+//	*prow = -1;
+//	*pcol = -1;
+//	return;
+//}
+//int main()
+//{
+//	int arr[3][3] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+//	int row = 3;
+//	int col = 3;
+//	int input = 0;
+//	printf("请输入要查找的数字\n");
+//	scanf("%d",&input);
+//	Find(arr, &row, &col, input);
+//	if (-1 == row&&-1 == col)
+//	{
+//		printf("没找到\n");
+//	}
+//	else
+//	{
+//		printf("找到了,下标是%d %d",row,col);
+//	}
+//	return 0;
+//}
