@@ -1,4 +1,4 @@
-﻿生成启动时间为 2019/9/7 23:17:01。
+﻿生成启动时间为 2019/9/8 23:30:09。
      1>项目“F:\code\promising\9.7\9.7\9.7.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
          F:\c\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt 9.7.c
@@ -10,4 +10,4 @@
 
 生成成功。
 
-已用时间 00:00:00.59
+已用时间 00:00:00.62
