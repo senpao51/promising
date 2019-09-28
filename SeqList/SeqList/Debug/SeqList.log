@@ -1,8 +1,19 @@
-﻿生成启动时间为 2019/9/26 22:57:52。
+﻿生成启动时间为 2019/9/27 22:34:38。
      1>项目“F:\code\promising\SeqList\SeqList\SeqList.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
          F:\c\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt SeqList.c
          SeqList.c
+     1>f:\code\promising\seqlist\seqlist\seqlist.c(31): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\code\promising\seqlist\seqlist\seqlist.c(91): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\code\promising\seqlist\seqlist\seqlist.c(109): warning C4018: “>”: 有符号/无符号不匹配
+     1>f:\code\promising\seqlist\seqlist\seqlist.c(114): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\code\promising\seqlist\seqlist\seqlist.c(127): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\code\promising\seqlist\seqlist\seqlist.c(147): warning C4018: “>”: 有符号/无符号不匹配
+     1>f:\code\promising\seqlist\seqlist\seqlist.c(179): warning C4018: “>”: 有符号/无符号不匹配
+     1>f:\code\promising\seqlist\seqlist\seqlist.c(206): warning C4018: “>”: 有符号/无符号不匹配
+     1>f:\code\promising\seqlist\seqlist\seqlist.c(229): warning C4018: “>”: 有符号/无符号不匹配
+     1>f:\code\promising\seqlist\seqlist\seqlist.c(273): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\code\promising\seqlist\seqlist\seqlist.c(294): warning C4018: “<”: 有符号/无符号不匹配
        Link:
          F:\c\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\code\promising\SeqList\Debug\SeqList.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\code\promising\SeqList\Debug\SeqList.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\code\promising\SeqList\Debug\SeqList.lib" /MACHINE:X86 Debug\SeqList.obj
          Debug\test.obj
@@ -11,4 +22,4 @@
 
 生成成功。
 
-已用时间 00:00:00.59
+已用时间 00:00:00.73
