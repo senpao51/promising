@@ -36,14 +36,13 @@ bool SlistPushBack(Slist* plist, DataType x)
 	return true;
 }
 
-
 //头插
 bool SlistPushFront(Slist* plist, DataType x)
 {
 	SlistNode* s = _Buynode(x);
-	if (s = NULL)
+	if (NULL==s)
 		return false;
-	s->next =plist->first->next;
+	s->next=plist->first->next;
 	plist->first->next = s;
 	if (plist->sz == 0)
 		plist->last = s;
@@ -54,12 +53,13 @@ bool SlistPushFront(Slist* plist, DataType x)
 //尾删
 bool SlistPopBack(Slist* plist)
 {
+	SlistNode* head;
 	if (plist->sz == 0)
 	{
 		printf("链表已空，无法删除\n");
 		return false;
 	}
-	SlistNode* head = plist->first;
+	head = plist->first;
 	while (head->next != plist->last)
 	{
 		head = head->next;
@@ -69,7 +69,6 @@ bool SlistPopBack(Slist* plist)
 	plist->last = head;
 	plist->sz--;
 	return true;
-
 }
 
 //头删
@@ -101,25 +100,30 @@ SlistNode* SlistFindVal(Slist* plist, DataType val)
 	return p;
 }
 
-/*
+
 //按值删
 bool SlistDeleteVal(Slist* plist, DataType val)
 {
 	assert(plist);
 	SlistNode* tmp = SlistFindVal(plist, val);
 	SlistNode* p = plist->first;
-	if (tmp = NULL)
+	if (tmp == NULL)
 	{
 		printf("查无此数\n");
 		return false;
 	}
-	while (p->next->data != tmp)
+	while (p->next!=tmp)
 	{
 		p = p->next;
 	}
-
+	if (tmp == plist->last)
+		plist->last = p;
+	p->next = tmp->next;
+	free(tmp);
+	plist->sz--;
+	return true;
 }
-*/
+
 
 
 

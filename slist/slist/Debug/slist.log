@@ -1,10 +1,8 @@
-﻿生成启动时间为 2019/9/28 18:03:21。
+﻿生成启动时间为 2019/9/29 23:34:03。
      1>项目“F:\code\promising\slist\slist\slist.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         F:\c\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt slist.c test.c
+         F:\c\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt test.c
          test.c
-         slist.c
-         正在生成代码...
        Link:
          F:\c\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\code\promising\slist\Debug\slist.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\code\promising\slist\Debug\slist.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\code\promising\slist\Debug\slist.lib" /MACHINE:X86 Debug\slist.obj
          Debug\test.obj
@@ -13,4 +11,4 @@
 
 生成成功。
 
-已用时间 00:00:00.75
+已用时间 00:00:00.61

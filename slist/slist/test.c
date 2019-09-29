@@ -34,7 +34,7 @@ int main()
 		case 1:
 		{
 				  printf("请输入要插入的数,以-1结束\n");
-				  while (scanf("%d", &x) && x != -1)
+				  while (scanf("%d",&x)&&x!=-1)
 				  {
 					  SlistPushBack(&mylist, x);
 				  }
@@ -43,38 +43,33 @@ int main()
 		case 2:
 		{
 				  printf("请输入要插入的数,以-1结束\n");
-				  while (scanf("%d", &x) && x != -1)
+				  while (scanf("%d",&x)&&x!=-1)
 				  {
 					  SlistPushFront(&mylist,x);
-					  //SeqListPushFront(&mylist, x);
 				  }
 				  break;
 		}
 		case 3:
 		{
 				  SlistPopBack(&mylist);
-				  //SeqListPopBack(&mylist);
 				  break;
 		}
 		case 4:
 		{
 				  SlistPopFront(&mylist);
-				  //SeqListPopFront(&mylist);
 				  break;
 		}
 		case 5:
 		{
 				  printf("请输入要删除的位置:");
 				  scanf("%d", &pos);
-				  //SeqListDeletePos(&mylist, pos);
 				  break;
 		}
 		case 6:
 		{
 				  printf("请输入要删除的数:");
 				  scanf("%d", &val);
-				  //SlistDeleteVal(&mylist,val);
-				 // SeqListDeleteVal(&mylist, val);
+				  SlistDeleteVal(&mylist,val);
 				  break;
 		}
 		case 7:
@@ -82,7 +77,6 @@ int main()
 				  printf("请输入要查找的位置:");
 				  scanf("%d", &pos);
 				  //SlistFindPos(&mylist, pos);
-				 // SeqListFindPos(&mylist, pos);
 				  break;
 		}
 		case 8:
@@ -90,7 +84,6 @@ int main()
 				  printf("请输入要查找的数:");
 				  scanf("%d", &val);
 				  SlistFindVal(&mylist, val);
-				  //SeqListFindVal(&mylist, val);
 				  break;
 		}
 		case 9:
@@ -99,7 +92,6 @@ int main()
 				  scanf("%d", &pos);
 				  printf("请输入要修改的值\n");
 				  scanf("%d", &val);
-				  //SeqListModifyPos(&mylist, pos, val);
 				  break;
 		}
 		case 10:
@@ -108,7 +100,6 @@ int main()
 				   scanf("%d", &val);
 				   printf("请输入要修改到的位置\n");
 				   scanf("%d", &pos);
-				   //SeqListModifyVal(&mylist, val, pos);
 				   break;
 		}
 		case 11:
@@ -117,7 +108,6 @@ int main()
 				   scanf("%d", &pos);
 				   printf("请输入要插入的值\n");
 				   scanf("%d", &val);
-				   //SeqListInsertPos(&mylist, pos, val);
 				   break;
 		}
 		case 12:
@@ -134,13 +124,11 @@ int main()
 		}
 		case 14:
 		{
-				   //lenth = SeqListLenth(&mylist);
 				   printf("顺序表的大小为：%d\n", lenth);
 				   break;
 		}
 		case 15:
 		{
-				  // SeqListClear(&mylist);
 				   break;
 		}
 		case 16:
@@ -149,7 +137,6 @@ int main()
 		}
 		case 17:
 		{
-				   //SeqListReverse(&mylist);
 				   break;
 		}
 		case 0:
@@ -164,6 +151,5 @@ int main()
 		}
 		}
 	} while (input);
-	//SeqListDestroy(&mylist);
 	return 0;
 }
