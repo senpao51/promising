@@ -61,8 +61,14 @@ int main()
 		}
 		case 5:
 		{
+				  int ret;
 				  printf("请输入要删除的位置:");
 				  scanf("%d", &pos);
+				  ret = SlistDeletePos(&mylist,pos,ret);
+				  if (ret)
+				  {
+					  printf("");
+				  }
 				  break;
 		}
 		case 6:
