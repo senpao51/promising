@@ -67,7 +67,11 @@ int main()
 				  ret = SlistDeletePos(&mylist,pos,ret);
 				  if (ret)
 				  {
-					  printf("");
+					  printf("该位置的数是%d\n",ret);
+				  }
+				  else
+				  {
+					  printf("查无此数\n");
 				  }
 				  break;
 		}
