@@ -27,8 +27,10 @@ bool SlistPushBack(Slist* plist,DataType x);
 bool SlistPushFront(Slist* plist, DataType x);
 bool SlistPopBack(Slist* plist);
 bool SlistPopFront(Slist* plist);
-SlistNode* SlistFindVal(Slist* plist, DataType val);
-bool SlistDeleteVal(Slist* plist, DataType val);
+//int SlistDeletePos(&mylist, pos, ret);
+bool SlistFindPos(Slist* plist, int pos);
+SlistNode* SlistFindVal(Slist* plist, int val);
+bool SlistDeleteVal(Slist* plist, int val);
 
 
 

@@ -88,6 +88,23 @@ bool SlistPopFront(Slist* plist)
 	return true;
 }
 
+//按位置查找
+bool SlistFindPos(Slist* plist, int pos)
+{
+	assert(plist!=NULL);
+	SlistNode*head = plist->first;
+	if (pos <= 0 || pos > plist->sz)
+	{
+		printf("位置错误\n");
+		return false;
+	}
+	while (pos--)
+	{
+		head = head->next;
+	}
+	printf("该位置的数据为:%d\n",head->data);
+	return true;
+}
 
 //按值查找
 SlistNode* SlistFindVal(Slist* plist, DataType val)

@@ -61,18 +61,9 @@ int main()
 		}
 		case 5:
 		{
-				  int ret;
 				  printf("请输入要删除的位置:");
 				  scanf("%d", &pos);
-				  ret = SlistDeletePos(&mylist,pos,ret);
-				  if (ret)
-				  {
-					  printf("该位置的数是%d\n",ret);
-				  }
-				  else
-				  {
-					  printf("查无此数\n");
-				  }
+				  //SlistDeletePos(&mylist,pos);
 				  break;
 		}
 		case 6:
@@ -86,7 +77,7 @@ int main()
 		{
 				  printf("请输入要查找的位置:");
 				  scanf("%d", &pos);
-				  //SlistFindPos(&mylist, pos);
+				  SlistFindPos(&mylist, pos);
 				  break;
 		}
 		case 8:
