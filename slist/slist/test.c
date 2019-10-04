@@ -63,7 +63,7 @@ int main()
 		{
 				  printf("请输入要删除的位置:");
 				  scanf("%d", &pos);
-				  //SlistDeletePos(&mylist,pos);
+				  SlistDeletePos(&mylist,pos);
 				  break;
 		}
 		case 6:
