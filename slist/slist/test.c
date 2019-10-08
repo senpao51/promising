@@ -99,7 +99,7 @@ int main()
 		{
 				   printf("请输入要修改的值\n");
 				   scanf("%d", &val);
-				   printf("请输入要修改到的位置\n");
+				   //printf("请输入要修改到的位置\n");
 				   scanf("%d", &pos);
 				   break;
 		}
