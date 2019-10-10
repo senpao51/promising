@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include "slist.h"
+#include "sclist.h"
 void menu()
 {
 	printf("**********************************\n");
@@ -21,9 +22,10 @@ int main()
 	int input = 0;
 	int pos = 0;
 	int val = 0;
-	int lenth = 0;
-	Slist mylist;
-	SlistInit(&mylist);
+	//Slist mylist;
+	SClist mylist;
+	//SlistInit(&mylist);
+	SClistInit(&mylist);
 	do
 	{
 		menu();
@@ -36,7 +38,8 @@ int main()
 				  printf("请输入要插入的数,以-1结束\n");
 				  while (scanf("%d",&x)&&x!=-1)
 				  {
-					  SlistPushBack(&mylist, x);
+					  //SlistPushBack(&mylist, x);
+					  SClistPushBack(&mylist, x);
 				  }
 				  break;
 		}
@@ -45,46 +48,46 @@ int main()
 				  printf("请输入要插入的数,以-1结束\n");
 				  while (scanf("%d",&x)&&x!=-1)
 				  {
-					  SlistPushFront(&mylist,x);
+					  //SlistPushFront(&mylist,x);
 				  }
 				  break;
 		}
 		case 3:
 		{
-				  SlistPopBack(&mylist);
+				  //SlistPopBack(&mylist);
 				  break;
 		}
 		case 4:
 		{
-				  SlistPopFront(&mylist);
+				  //SlistPopFront(&mylist);
 				  break;
 		}
 		case 5:
 		{
-				  //printf("请输入要删除的位置:");
+				  printf("请输入要删除的位置:");
 				  scanf("%d", &pos);
-				  SlistDeletePos(&mylist,pos);
+				  //SlistDeletePos(&mylist,pos);
 				  break;
 		}
 		case 6:
 		{
 				  printf("请输入要删除的数:");
 				  scanf("%d", &val);
-				  SlistDeleteVal(&mylist,val);
+				  //SlistDeleteVal(&mylist,val);
 				  break;
 		}
 		case 7:
 		{
 				  printf("请输入要查找的位置:");
 				  scanf("%d", &pos);
-				  SlistFindPos(&mylist, pos);
+				  //SlistFindPos(&mylist, pos);
 				  break;
 		}
 		case 8:
 		{
 				  printf("请输入要查找的数:");
 				  scanf("%d", &val);
-				  SlistFindVal(&mylist, val);
+				  //SlistFindVal(&mylist, val);
 				  break;
 		}
 		case 9:
@@ -93,14 +96,16 @@ int main()
 				  scanf("%d", &pos);
 				  printf("请输入要修改的值\n");
 				  scanf("%d", &val);
+				  //SlistModifyPos(&mylist,pos,val);
 				  break;
 		}
 		case 10:
 		{
 				   printf("请输入要修改的值\n");
 				   scanf("%d", &val);
-				   //printf("请输入要修改到的位置\n");
+				   printf("请输入要修改到的位置\n");
 				   scanf("%d", &pos);
+				  // SlistModifyVal(&mylist,val,pos);
 				   break;
 		}
 		case 11:
@@ -115,29 +120,33 @@ int main()
 		{
 				   printf("请输入要插入的值\n");
 				   scanf("%d", &val);
-
+				   //SlistInsertVal(&mylist,val);
 				   break;
 		}
 		case 13:
 		{
-				   SlistShow(&mylist);
+				   //SlistShow(&mylist);
+				   SClistShow(&mylist);
 				   break;
 		}
 		case 14:
 		{
-				   printf("顺序表的大小为：%d\n", lenth);
+				   //printf("链表的大小为：%d\n", SlistLength(&mylist));
 				   break;
 		}
 		case 15:
 		{
+				   //SlistClear(&mylist);
 				   break;
 		}
 		case 16:
-		{
+		{	
+				   //SlistSort(&mylist);
 				   break;
 		}
 		case 17:
 		{
+				  // SlistReserve(&mylist);
 				   break;
 		}
 		case 0:
@@ -152,5 +161,6 @@ int main()
 		}
 		}
 	} while (input);
+	//SlistDestroy(&mylist);
 	return 0;
 }
