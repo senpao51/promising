@@ -48,7 +48,7 @@ int main()
 				  printf("请输入要插入的数,以-1结束\n");
 				  while (scanf("%d",&x)&&x!=-1)
 				  {
-					  //SlistPushFront(&mylist,x);
+					  SlistPushFront(&mylist,x);
 				  }
 				  break;
 		}
