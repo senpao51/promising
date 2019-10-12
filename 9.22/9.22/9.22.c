@@ -15,34 +15,37 @@
 //}
 
 
-char* my_strstr(const char*p1, const char*p2)
-{
-	assert(p1 != NULL);
-	assert(p2 != NULL);
-	const char* s1 = p1;
-	const char* s2 = p2;
-	const char* start = s1;
-	while (*start)
-	{
-		s1 = start;
-		while (*s1 == *s2)
-		{
-			s1++;
-			s2++;
-		}
-		if (*s2 == '\0')
-		{
-			return start;
-		}
-		start++;
-		s2=p2;
-	}
-	return NULL;
-}
-int main()
-{
-	char arr[] = "senpaolove";
-	char*ret = my_strstr(arr, "paol");
-	printf("%s\n",ret);
-	return 0;
-}
+//char* my_strstr(const char*p1, const char*p2)
+//{
+//	assert(p1 != NULL);
+//	assert(p2 != NULL);
+//	const char* s1 = p1;
+//	const char* s2 = p2;
+//	const char* start = s1;
+//	while (*start)
+//	{
+//		s1 = start;
+//		while (*s1 == *s2)
+//		{
+//			s1++;
+//			s2++;
+//		}
+//		if (*s2 == '\0')
+//		{
+//			return start;
+//		}
+//		start++;
+//		s2=p2;
+//	}
+//	return NULL;
+//}
+//int main()
+//{
+//	char arr[] = "senpaolove";
+//	char*ret = my_strstr(arr, "paol");
+//	printf("%s\n",ret);
+//	return 0;
+//}
+
+
+

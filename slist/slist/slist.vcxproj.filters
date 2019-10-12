@@ -24,12 +24,24 @@
     <ClCompile Include="sclist.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="dlist.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dclist.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="slist.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="sclist.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dlist.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dclist.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

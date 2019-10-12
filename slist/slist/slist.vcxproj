@@ -65,11 +65,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="dclist.c" />
+    <ClCompile Include="dlist.c" />
     <ClCompile Include="sclist.c" />
     <ClCompile Include="slist.c" />
     <ClCompile Include="test.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="dclist.h" />
+    <ClInclude Include="dlist.h" />
     <ClInclude Include="sclist.h" />
     <ClInclude Include="slist.h" />
   </ItemGroup>

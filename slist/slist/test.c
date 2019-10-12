@@ -1,6 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include "slist.h"
 #include "sclist.h"
+#include "dlist.h"
+#include "dclist.h"
 void menu()
 {
 	printf("**********************************\n");
@@ -23,9 +25,11 @@ int main()
 	int pos = 0;
 	int val = 0;
 	//Slist mylist;
-	SClist mylist;
+	//SClist mylist;
+	DClist mylist;
 	//SlistInit(&mylist);
-	SClistInit(&mylist);
+	//SClistInit(&mylist);
+	DClistInit(&mylist);
 	do
 	{
 		menu();
@@ -39,7 +43,7 @@ int main()
 				  while (scanf("%d",&x)&&x!=-1)
 				  {
 					  //SlistPushBack(&mylist, x);
-					  SClistPushBack(&mylist, x);
+					 // SClistPushBack(&mylist, x);
 				  }
 				  break;
 		}
@@ -48,18 +52,21 @@ int main()
 				  printf("请输入要插入的数,以-1结束\n");
 				  while (scanf("%d",&x)&&x!=-1)
 				  {
-					  SlistPushFront(&mylist,x);
+					  //SlistPushFront(&mylist,x);
+					 // SClistPushFront(&mylist, x);
 				  }
 				  break;
 		}
 		case 3:
 		{
 				  //SlistPopBack(&mylist);
+				 // SClistPopBack(&mylist);
 				  break;
 		}
 		case 4:
 		{
 				  //SlistPopFront(&mylist);
+				 // SClistPopFront(&mylist);
 				  break;
 		}
 		case 5:
@@ -126,17 +133,19 @@ int main()
 		case 13:
 		{
 				   //SlistShow(&mylist);
-				   SClistShow(&mylist);
+				   //SClistShow(&mylist);
 				   break;
 		}
 		case 14:
 		{
 				   //printf("链表的大小为：%d\n", SlistLength(&mylist));
+				   //printf("链表的大小为：%d\n", SClistLength(&mylist));
 				   break;
 		}
 		case 15:
 		{
 				   //SlistClear(&mylist);
+				  // SClistClear(&mylist);
 				   break;
 		}
 		case 16:
