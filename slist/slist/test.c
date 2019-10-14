@@ -20,6 +20,7 @@ void menu()
 }
 int main()
 {
+	DClistNode *p;
 	DataType x = 0;
 	int input = 0;
 	int pos = 0;
@@ -44,6 +45,7 @@ int main()
 				  {
 					  //SlistPushBack(&mylist, x);
 					 // SClistPushBack(&mylist, x);
+					  DClistPushBack(&mylist, x);
 				  }
 				  break;
 		}
@@ -54,6 +56,7 @@ int main()
 				  {
 					  //SlistPushFront(&mylist,x);
 					 // SClistPushFront(&mylist, x);
+					  DClistPushFront(&mylist, x);
 				  }
 				  break;
 		}
@@ -61,12 +64,14 @@ int main()
 		{
 				  //SlistPopBack(&mylist);
 				 // SClistPopBack(&mylist);
+				  DClistPopBack(&mylist);
 				  break;
 		}
 		case 4:
 		{
 				  //SlistPopFront(&mylist);
 				 // SClistPopFront(&mylist);
+				  DClistPopFront(&mylist);
 				  break;
 		}
 		case 5:
@@ -80,7 +85,8 @@ int main()
 		{
 				  printf("请输入要删除的数:");
 				  scanf("%d", &val);
-				  //SlistDeleteVal(&mylist,val);
+				 // SlistDeleteVal(&mylist,val);
+				  DClistDeleteVal(&mylist, val);
 				  break;
 		}
 		case 7:
@@ -95,6 +101,7 @@ int main()
 				  printf("请输入要查找的数:");
 				  scanf("%d", &val);
 				  //SlistFindVal(&mylist, val);
+				  p = DClistFindVal(&mylist, val);
 				  break;
 		}
 		case 9:
@@ -128,29 +135,34 @@ int main()
 				   printf("请输入要插入的值\n");
 				   scanf("%d", &val);
 				   //SlistInsertVal(&mylist,val);
+				   DClistInsertVal(&mylist, val);
 				   break;
 		}
 		case 13:
 		{
 				   //SlistShow(&mylist);
 				   //SClistShow(&mylist);
+				   DClistShow(&mylist);
 				   break;
 		}
 		case 14:
 		{
 				   //printf("链表的大小为：%d\n", SlistLength(&mylist));
 				   //printf("链表的大小为：%d\n", SClistLength(&mylist));
+				   printf("链表的大小为：%d\n", DClistLength(&mylist));
 				   break;
 		}
 		case 15:
 		{
 				   //SlistClear(&mylist);
 				  // SClistClear(&mylist);
+				   DClistClear(&mylist);
 				   break;
 		}
 		case 16:
 		{	
 				   //SlistSort(&mylist);
+				   DClistSort(&mylist);
 				   break;
 		}
 		case 17:
@@ -171,5 +183,6 @@ int main()
 		}
 	} while (input);
 	//SlistDestroy(&mylist);
+	DClistDestroy(&mylist);
 	return 0;
 }
