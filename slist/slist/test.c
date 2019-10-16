@@ -25,6 +25,7 @@ int main()
 	int input = 0;
 	int pos = 0;
 	int val = 0;
+	DataType flag = 0;
 	//Slist mylist;
 	//SClist mylist;
 	DClist mylist;
@@ -94,6 +95,11 @@ int main()
 				  printf("请输入要查找的位置:");
 				  scanf("%d", &pos);
 				  //SlistFindPos(&mylist, pos);
+				  flag = DClistFindPos(&mylist, pos);
+				  if (-1 == flag)
+					  printf("位置错误\n");
+				  else
+					  printf("该位置的数为%d\n",flag);
 				  break;
 		}
 		case 8:
@@ -110,7 +116,7 @@ int main()
 				  scanf("%d", &pos);
 				  printf("请输入要修改的值\n");
 				  scanf("%d", &val);
-				  //SlistModifyPos(&mylist,pos,val);
+				  SlistModifyPos(&mylist,pos,val);
 				  break;
 		}
 		case 10:
@@ -168,6 +174,7 @@ int main()
 		case 17:
 		{
 				  // SlistReserve(&mylist);
+				   DClistReserve(&mylist);
 				   break;
 		}
 		case 0:
