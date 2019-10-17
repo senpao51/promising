@@ -8,6 +8,7 @@
 
 #define  DataType int
 #define  STACK_DEAFAULT  8
+#define  ADD_DEAFAULT  5
 
 typedef struct SeqStack
 {
@@ -18,6 +19,12 @@ typedef struct SeqStack
 
 
 void SeqStackInit(SeqStack* ps,int sz);
+void SeqStackPush(SeqStack* ps,DataType x);
+void SeqStackPop(SeqStack* ps);
+void SeqStackPeepTop(SeqStack* ps);
+void SeqStackShow(SeqStack* ps);
+
+
 
 
 
