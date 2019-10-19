@@ -1,0 +1,14 @@
+﻿生成启动时间为 2019/10/19 17:00:48。
+     1>项目“F:\code\promising\queue\queue\queue.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         F:\c\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt queue.c test.c
+         test.c
+         queue.c
+     1>f:\code\promising\queue\queue\queue.c(2): error C2014: 预处理器命令必须作为第一个非空白空间启动
+     1>f:\code\promising\queue\queue\queue.c(55): fatal error C1004: 发现意外的文件尾
+         正在生成代码...
+     1>已完成生成项目“F:\code\promising\queue\queue\queue.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:06.88
