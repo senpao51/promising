@@ -3,7 +3,7 @@
 int main()
 {
 	SeqCyQueue Q;
-	SeqCyQueueInit(&Q,5);
+	SeqCyQueueInit(5);
 	SeqCyQueueEn(&Q,1);
 	SeqCyQueueEn(&Q,2);
 	SeqCyQueueEn(&Q,3);
@@ -19,5 +19,6 @@ int main()
 	SeqCyQueueEn(&Q, 9);
 	SeqCyQueueEn(&Q, 10);
 	SeqCyQueueShow(&Q);
+	SeqCyQueueDestroy(&Q);
 	return 0;
 }

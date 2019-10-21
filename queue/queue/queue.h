@@ -26,7 +26,8 @@ typedef struct LinQueue
 	LinkQueueNode* front;
 	LinkQueueNode* tail;
 }LinQueue;
-//void SeqCyQueueInit(SeqCyQueue* Q,int sz);
-//void SeqCyQueueEn(SeqCyQueue* Q, DataType x);
-//void SeqCyQueueDe(SeqCyQueue* Q);
-//void SeqCyQueueShow(SeqCyQueue* Q);
+SeqCyQueue* SeqCyQueueInit(int sz);
+void SeqCyQueueEn(SeqCyQueue* Q, DataType x);
+void SeqCyQueueDe(SeqCyQueue* Q);
+void SeqCyQueueShow(SeqCyQueue* Q);
+void SeqCyQueueDestroy(SeqCyQueue* Q);

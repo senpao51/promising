@@ -1,11 +1,13 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include "queue.h"
 //初始化
-void SeqCyQueueInit(SeqCyQueue* Q, int sz)
+SeqCyQueue* SeqCyQueueInit(int sz)
 {
-	Q->capacity = sz > _DEAFAULT_QUEUE_SIZE ? sz : _DEAFAULT_QUEUE_SIZE;
-	Q->base = (DataType*)malloc(sizeof(DataType)*Q->capacity);
-	Q->front = Q->tail = 0;
+	SeqCyQueue* ptr = (SeqCyQueue*)malloc(sizeof(SeqCyQueue));
+	ptr->capacity = sz > _DEAFAULT_QUEUE_SIZE ? sz : _DEAFAULT_QUEUE_SIZE;
+	ptr->base = (DataType*)malloc(sizeof(ptr->capacity+1));
+	ptr->front = ptr->tail = 0;
+	return ptr;
 }
 
 //判满
@@ -51,4 +53,11 @@ void SeqCyQueueShow(SeqCyQueue* Q)
 		printf("%d ",Q->base[i]);
 	}
 	printf("\n");
+}
+
+
+//摧毁队列
+void SeqCyQueueDestroy(SeqCyQueue* Q)
+{
+
 }
