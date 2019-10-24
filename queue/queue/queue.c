@@ -57,11 +57,10 @@ void SeqCyQueueShow(SeqCyQueue* Q)
 
 
 //´Ý»Ù¶ÓÁÐ
-void SeqCyQueueDestroy(SeqCyQueue* Q)
+void SeqCyQueueDestroy(SeqCyQueue*Q) 
 {
 	free(Q->base);
-	Q->base = NULL;
 	free(Q);
 	Q = NULL;
-	
+	Q->base = NULL;
 }
