@@ -64,3 +64,5 @@ void SeqCyQueueDestroy(SeqCyQueue*Q)
 	Q = NULL;
 	Q->base = NULL;
 }
+
+
