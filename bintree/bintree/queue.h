@@ -19,7 +19,7 @@ typedef struct SeqCyQueue
 }SeqCyQueue;
 
 
-SeqCyQueue* SeqCyQueueInit(int sz);
+void SeqCyQueueInit(SeqCyQueue* Q);
 void SeqCyQueueEn(SeqCyQueue* Q, QueueDataType x);
 void SeqCyQueueDe(SeqCyQueue* Q);
 void SeqCyQueueShow(SeqCyQueue* Q);
@@ -30,14 +30,11 @@ BinTreeNode* SeqCyQueueTop(SeqCyQueue* Q);
 
 
 
-
-SeqCyQueue* SeqCyQueueInit(int sz)
+void SeqCyQueueInit(SeqCyQueue* Q)
 {
-	SeqCyQueue* ptr = (SeqCyQueue*)malloc(sizeof(SeqCyQueue));
-	ptr->capacity = sz > _DEAFAULT_QUEUE_SIZE ? sz : _DEAFAULT_QUEUE_SIZE;
-	ptr->base = (QueueDataType*)malloc(sizeof(ptr->capacity + 1));
-	ptr->front = ptr->tail = 0;
-	return ptr;
+	Q->capacity = _DEAFAULT_QUEUE_SIZE;
+	Q->base = (QueueDataType*)malloc(sizeof(Q->capacity + 1));
+	Q->front = Q->tail = 0;
 }
 
 //ÅĞÂú

@@ -171,8 +171,8 @@ void _LevelOrder(BinTreeNode* t)
 		while (!SeqCyQueueEmpty(&Q))
 		{
 			p = SeqCyQueueTop(&Q);
+			printf("%c ", p->data);
 			SeqCyQueueDe(&Q);
-			printf("%c ",p->data);
 			if (p->leftchild!=NULL)
 				_LevelOrder(t->leftchild);
 			if (p->rightchild!=NULL)
@@ -224,7 +224,7 @@ BinTreeNode* _Find(BinTreeNode* t, DataType key)
 		return p;
 	return _Find(t->rightchild,key);
 }
-BinTreeNode *Find(BinTree* t, DataType key)
+BinTreeNode* Find(BinTree* t, DataType key)
 {
 	return _Find(t->root,key);
 }
@@ -250,7 +250,7 @@ BinTreeNode*Parent(BinTree* t, DataType key)
 }
 
 //¿ËÂ¡
-BinTreeNode*_Clone(BinTreeNode*t)
+BinTreeNode* _Clone(BinTreeNode*t)
 {
 	if (t == NULL)
 		return NULL;
@@ -265,7 +265,7 @@ BinTreeNode*_Clone(BinTreeNode*t)
 }
 void Clone(BinTree* t1, BinTree* t2)
 {
-	t2 =  _Clone(t1->root);
+	t2 = _Clone(t1->root);
 }
 
 
@@ -280,7 +280,7 @@ bool _Equal(BinTreeNode*t1, BinTreeNode*t2)
 		&& _Equal(t1->leftchild, t2->leftchild) 
 		&& _Equal(t1->rightchild, t2->rightchild);
 }
-bool Equal(BinTree*t1, BinTree*t2)
+bool Equal(BinTree*t1,BinTree*t2)
 {
 	return _Equal(t1->root,t2->root);
 }

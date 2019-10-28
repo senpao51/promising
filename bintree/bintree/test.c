@@ -21,13 +21,13 @@ int main()
 	PostOrder(&bt);
 	printf("\n");
 	printf("Level:");
-	//LevelOrder(&bt);
+	LevelOrder(&bt);
 	printf("\n");
 	printf("Size = %d\n",Size(&bt));
 	printf("Height = %d\n",Height(&bt));
 	p = Find(&bt,'B');
 	p = Parent(&bt,'G');
-	Clone(&bt,&btmp);
-
+	Clone(&bt, &btmp);
+	//printf("%d\n",Equal());
 	return 0;
 }

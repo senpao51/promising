@@ -42,7 +42,7 @@ size_t Size(BinTree* t);
 size_t Height(BinTree* t);
 BinTreeNode*Find(BinTree* t,DataType key);
 BinTreeNode*Parent(BinTree* t, DataType key);
-void Clone(BinTree* t);
+void Clone(BinTree* t1, BinTree* t2);
 bool Equal(BinTree*t1,BinTree*t2);
 
 
