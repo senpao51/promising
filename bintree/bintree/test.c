@@ -3,7 +3,9 @@
 int main()
 {
 	char *str = "ABC##DE##F##G#H##";
+	char *str2 = "ABCE##F##D##GH##I##";
 	int i = 0;
+	int j  =0 ;
 	BinTreeNode* p;
 	BinTree bt;
 	BinTree btmp;
@@ -11,23 +13,34 @@ int main()
 	BinTreeInit(&btmp);
 	//BinTreeCreate_1(&bt);
 	BinTreeCreate_3(&bt,str,&i);
-	printf("VRL:");
+	BinTreeCreate_3(&btmp, str2, &j);
+	printf("VRL  :");
 	PreOrder(&bt);
 	printf("\n");
-	printf("RVL:");
+	printf("VRLNr:");
+	PreOrderNr(&bt);
+	printf("\n");
+
+	printf("RVL  :");
 	InOrder(&bt);
 	printf("\n");
-	printf("RLV:");
+	printf("RVLNr:");
+	InOrderNr(&bt);
+	printf("\n");
+
+	printf("RLV  :");
 	PostOrder(&bt);
 	printf("\n");
+
 	printf("Level:");
 	LevelOrder(&bt);
 	printf("\n");
+
 	printf("Size = %d\n",Size(&bt));
 	printf("Height = %d\n",Height(&bt));
 	p = Find(&bt,'B');
 	p = Parent(&bt,'G');
-	Clone(&bt, &btmp);
-	//printf("%d\n",Equal());
+	//Clone(&bt, &btmp);
+	printf("%d\n",Equal(&bt,&btmp));
 	return 0;
 }

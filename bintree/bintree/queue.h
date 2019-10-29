@@ -9,7 +9,7 @@
 #define DataType char
 #define QueueDataType BinTreeNode*
 
-#define _DEAFAULT_QUEUE_SIZE 20
+
 typedef struct SeqCyQueue
 {
 	QueueDataType* base;

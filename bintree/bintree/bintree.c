@@ -113,7 +113,7 @@ void BinTreeCreate_3(BinTree* t, char*str, int*i)
 }
 
 
-//前序
+//前序(递归)
 void _PreOrder(BinTreeNode* t)
 {
 	if (t != NULL)
@@ -129,7 +129,34 @@ void PreOrder(BinTree* t)
 	_PreOrder(t->root);
 }
 
-//中序
+#include "stack.h"
+//前序(非递归)
+void _PreOrderNr(BinTreeNode* t)
+{
+	if (t != NULL)
+	{
+		BinTreeNode* p;
+		SeqStack st;
+		SeqStackInit(&st, _DEAFAULT_QUEUE_SIZE);
+		SeqStackPush(&st,t);
+		while (!SeqStackIsEmpty(&st))
+		{
+			p = SeqStackPeepTop(&st);
+			printf("%c ", p->data);
+			SeqStackPop(&st);
+			if (p->rightchild!=NULL)
+				SeqStackPush(&st, p->rightchild);
+			if (p->leftchild!=NULL)
+				SeqStackPush(&st, p->leftchild);
+		}
+	}
+}
+void PreOrderNr(BinTree* t)
+{
+	_PreOrderNr(t->root);
+}
+
+//中序(递归)
 void _InOrder(BinTreeNode* t)
 {
 	if (t != NULL)
@@ -142,6 +169,18 @@ void _InOrder(BinTreeNode* t)
 void InOrder(BinTree* t)
 {
 	_InOrder(t->root);
+}
+//中序(非递归)
+void _InOrderNr(BinTreeNode* t)
+{
+	if (t != NULL)
+	{
+
+	}
+}
+void InOrderNr(BinTree* t)
+{
+	_InOrderNr(t->root);
 }
 //后序
 void _PostOrder(BinTreeNode* t)
@@ -252,9 +291,10 @@ BinTreeNode*Parent(BinTree* t, DataType key)
 //克隆
 BinTreeNode* _Clone(BinTreeNode*t)
 {
+	
 	if (t == NULL)
 		return NULL;
-	while (t != NULL)
+	else
 	{
 		BinTreeNode* p = (BinTreeNode*)malloc(sizeof(BinTreeNode));
 		p->data = t->data;
@@ -265,20 +305,20 @@ BinTreeNode* _Clone(BinTreeNode*t)
 }
 void Clone(BinTree* t1, BinTree* t2)
 {
-	t2 = _Clone(t1->root);
+	t2->root = _Clone(t1->root);
 }
 
 
 //判断两个数是否相等
 bool _Equal(BinTreeNode*t1, BinTreeNode*t2)
 {
-	if (t1 == NULL && t2 == NULL)
+	if (t1 == NULL&&t2 == NULL)
 		return true;
 	if (t1 == NULL || t2 == NULL)
 		return false;
-	return (t1->data == t2->data) 
+	return(t1->data == t2->data) 
 		&& _Equal(t1->leftchild, t2->leftchild) 
-		&& _Equal(t1->rightchild, t2->rightchild);
+		&& _Equal(t1->rightchild,t2->rightchild);
 }
 bool Equal(BinTree*t1,BinTree*t2)
 {
