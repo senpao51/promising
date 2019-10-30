@@ -31,11 +31,13 @@ int main()
 	printf("RLV  :");
 	PostOrder(&bt);
 	printf("\n");
+	printf("RLVNr:");
+	PostOrderNr(&bt);
+	printf("\n");
 
 	printf("Level:");
 	LevelOrder(&bt);
 	printf("\n");
-
 	printf("Size = %d\n",Size(&bt));
 	printf("Height = %d\n",Height(&bt));
 	p = Find(&bt,'B');

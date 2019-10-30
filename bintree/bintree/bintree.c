@@ -135,13 +135,12 @@ void _PreOrderNr(BinTreeNode* t)
 {
 	if (t != NULL)
 	{
-		BinTreeNode* p;
 		SeqStack st;
 		SeqStackInit(&st, _DEAFAULT_QUEUE_SIZE);
 		SeqStackPush(&st,t);
 		while (!SeqStackIsEmpty(&st))
 		{
-			p = SeqStackPeepTop(&st);
+			BinTreeNode* p = SeqStackPeepTop(&st);
 			printf("%c ", p->data);
 			SeqStackPop(&st);
 			if (p->rightchild!=NULL)
@@ -175,14 +174,39 @@ void _InOrderNr(BinTreeNode* t)
 {
 	if (t != NULL)
 	{
-
+		SeqStack st;
+		SeqStackInit(&st, _DEAFAULT_QUEUE_SIZE);
+		SeqStackPush(&st, t);
+		while (t ->leftchild!= NULL)
+		{
+			SeqStackPush(&st, t->leftchild);
+			t = t->leftchild;
+		}
+		while (!SeqStackIsEmpty(&st))
+		{
+			BinTreeNode*q;
+			BinTreeNode* p = SeqStackPeepTop(&st);
+			SeqStackPop(&st);
+			printf("%c ",p->data);
+			if (!SeqStackIsEmpty(&st))
+			{
+				p = SeqStackPeepTop(&st);
+				SeqStackPop(&st);
+				printf("%c ", p->data);
+			}
+			q = p->rightchild;
+			if (q!=NULL)
+				SeqStackPush(&st, q);
+			if (q!=NULL&&q->leftchild!=NULL)
+				SeqStackPush(&st, q->leftchild);
+		}
 	}
 }
 void InOrderNr(BinTree* t)
 {
 	_InOrderNr(t->root);
 }
-//后序
+//后序(递归)
 void _PostOrder(BinTreeNode* t)
 {
 	if (t != NULL)
@@ -197,7 +221,45 @@ void PostOrder(BinTree* t)
 	_PostOrder(t->root);
 }
 
-//层次
+//后序(非递归)
+void _PostOrderNr(BinTreeNode* t)
+{
+	if (t != NULL)
+	{
+		SeqStack st;
+		SeqStackInit(&st, _DEAFAULT_QUEUE_SIZE);
+		SeqStackPush(&st, t);
+		while (t->leftchild != NULL)
+		{
+			SeqStackPush(&st, t->leftchild);
+			t = t->leftchild;
+		}
+		while (!SeqStackIsEmpty(&st))
+		{
+			BinTreeNode* q;
+			BinTreeNode* tmp;
+			BinTreeNode* p = SeqStackPeepTop(&st);
+			printf("%c ",p->data);
+			SeqStackPop(&st);
+			if (!SeqStackIsEmpty(&st))
+			{
+				tmp = SeqStackPeepTop(&st);
+				q = tmp->rightchild;
+				if (q != NULL&&q != p)
+					SeqStackPush(&st, q);
+				if (q != NULL&&q->rightchild != NULL&&q != p)
+					SeqStackPush(&st, q->rightchild);
+				if (q != NULL&&q->leftchild != NULL&&q != p)
+					SeqStackPush(&st, q->leftchild);
+			}
+		}
+	}
+}
+void PostOrderNr(BinTree* t)
+{
+	_PostOrderNr(t->root);
+}
+//层次(递归)
 #include "queue.h"
 void _LevelOrder(BinTreeNode* t)
 {
@@ -212,10 +274,10 @@ void _LevelOrder(BinTreeNode* t)
 			p = SeqCyQueueTop(&Q);
 			printf("%c ", p->data);
 			SeqCyQueueDe(&Q);
-			if (p->leftchild!=NULL)
-				_LevelOrder(t->leftchild);
-			if (p->rightchild!=NULL)
-				_LevelOrder(t->rightchild);
+			if (p->leftchild != NULL)
+				SeqCyQueueEn(&Q,p->leftchild);
+			if (p->rightchild != NULL)
+				SeqCyQueueEn(&Q,p->rightchild);
 		}
 	}
 }
@@ -223,6 +285,7 @@ void LevelOrder(BinTree* t)
 {
 	_LevelOrder(t->root);
 }
+
 
 
 //节点个数

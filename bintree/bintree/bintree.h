@@ -38,6 +38,7 @@ void PreOrderNr(BinTree* t);
 void InOrder(BinTree* t);
 void InOrderNr(BinTree* t);
 void PostOrder(BinTree* t);
+void PostOrderNr(BinTree* t);
 void LevelOrder(BinTree* t);
 size_t Size(BinTree* t);
 size_t Height(BinTree* t);
