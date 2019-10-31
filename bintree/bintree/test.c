@@ -3,7 +3,7 @@
 int main()
 {
 	char *str = "ABC##DE##F##G#H##";
-	char *str2 = "ABCE##F##D##GH##I##";
+	char *str2 = "ABC##D##BD##C##";
 	int i = 0;
 	int j  =0 ;
 	BinTreeNode* p;
@@ -44,5 +44,6 @@ int main()
 	p = Parent(&bt,'G');
 	//Clone(&bt, &btmp);
 	printf("%d\n",Equal(&bt,&btmp));
+	printf("%d\n",isSymmetric(&bt));
 	return 0;
 }

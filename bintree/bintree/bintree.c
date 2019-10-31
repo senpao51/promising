@@ -387,4 +387,22 @@ bool Equal(BinTree*t1,BinTree*t2)
 {
 	return _Equal(t1->root,t2->root);
 }
-
+//判断一个数是否是对称
+bool _isSymmetric(BinTreeNode*t1,BinTreeNode*t2)
+{
+	if (t1 == NULL&&t2 == NULL)
+		return true;
+	if (t1 == NULL || t2 == NULL)
+		return false;
+	return (t1->data == t2->data)
+		&& _isSymmetric(t1->leftchild, t2->rightchild)
+		&& _isSymmetric(t1->rightchild,t2->leftchild);
+}
+bool isSymmetric(BinTree*t)
+{
+	if (t == NULL)
+		return true;
+	if (t->root != NULL)
+		return _isSymmetric(t->root->leftchild,t->root->rightchild);
+	return false;
+}
