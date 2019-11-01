@@ -392,7 +392,7 @@ bool _isSymmetric(BinTreeNode*t1,BinTreeNode*t2)
 {
 	if (t1 == NULL&&t2 == NULL)
 		return true;
-	if (t1 == NULL || t2 == NULL)
+	if (t1 == NULL||t2 == NULL)
 		return false;
 	return (t1->data == t2->data)
 		&& _isSymmetric(t1->leftchild, t2->rightchild)
@@ -400,7 +400,7 @@ bool _isSymmetric(BinTreeNode*t1,BinTreeNode*t2)
 }
 bool isSymmetric(BinTree*t)
 {
-	if (t == NULL)
+	if (t->root== NULL)
 		return true;
 	if (t->root != NULL)
 		return _isSymmetric(t->root->leftchild,t->root->rightchild);

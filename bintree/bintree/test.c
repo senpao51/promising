@@ -5,15 +5,15 @@ int main()
 	char *str = "ABC##DE##F##G#H##";
 	char *str2 = "ABC##D##BD##C##";
 	int i = 0;
-	int j  =0 ;
-	BinTreeNode* p;
+	int j  =0;
+	BinTreeNode*p;
 	BinTree bt;
 	BinTree btmp;
 	BinTreeInit(&bt);
 	BinTreeInit(&btmp);
 	//BinTreeCreate_1(&bt);
 	BinTreeCreate_3(&bt,str,&i);
-	BinTreeCreate_3(&btmp, str2, &j);
+	BinTreeCreate_3(&btmp,str2, &j);
 	printf("VRL  :");
 	PreOrder(&bt);
 	printf("\n");
@@ -42,7 +42,7 @@ int main()
 	printf("Height = %d\n",Height(&bt));
 	p = Find(&bt,'B');
 	p = Parent(&bt,'G');
-	Clone(&bt, &btmp);
+	//Clone(&bt, &btmp);
 	printf("%d\n",Equal(&bt,&btmp));
 	printf("%d\n",isSymmetric(&btmp));
 	return 0;
