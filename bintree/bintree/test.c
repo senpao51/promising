@@ -42,8 +42,8 @@ int main()
 	printf("Height = %d\n",Height(&bt));
 	p = Find(&bt,'B');
 	p = Parent(&bt,'G');
-	//Clone(&bt, &btmp);
+	Clone(&bt, &btmp);
 	printf("%d\n",Equal(&bt,&btmp));
-	printf("%d\n",isSymmetric(&bt));
+	printf("%d\n",isSymmetric(&btmp));
 	return 0;
 }
