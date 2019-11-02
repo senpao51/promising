@@ -112,6 +112,25 @@ void BinTreeCreate_3(BinTree* t, char*str, int*i)
 	t->root = _BinTreeCreate_3(str,i);
 }
 
+//根据中序和后序创建树
+BinTreeNode*_BinTreeCreateBy_LVR_LRV(char*lvr, char*lrv, int n)
+{
+	if (n == 0)
+		return NULL;
+	int k = 0;
+	while (lrv[n-1] != lvr[k])
+		k++;
+	BinTreeNode* t = (BinTreeNode*)malloc(sizeof(BinTreeNode));
+	t->data = lvr[k];
+	t->rightchild = _BinTreeCreateBy_LVR_LRV(lvr+k+1,lrv+k,n-k-1);
+	t->leftchild = _BinTreeCreateBy_LVR_LRV(lvr,lrv,k);
+	return t;
+}
+void BinTreeCreateBy_LVR_LRV(BinTree* t, char*lvr, char*lrv, int n)
+{
+	t->root = _BinTreeCreateBy_LVR_LRV(lvr, lrv, n);
+}
+
 
 //前序(递归)
 void _PreOrder(BinTreeNode* t)
@@ -402,7 +421,6 @@ bool isSymmetric(BinTree*t)
 {
 	if (t->root== NULL)
 		return true;
-	if (t->root != NULL)
+	else
 		return _isSymmetric(t->root->leftchild,t->root->rightchild);
-	return false;
 }

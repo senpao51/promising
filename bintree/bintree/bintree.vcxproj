@@ -66,10 +66,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="bintree.c" />
+    <ClCompile Include="bst.c" />
+    <ClCompile Include="heap.c" />
     <ClCompile Include="test.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bintree.h" />
+    <ClInclude Include="bst.h" />
+    <ClInclude Include="heap.h" />
     <ClInclude Include="queue.h" />
     <ClInclude Include="stack.h" />
   </ItemGroup>
