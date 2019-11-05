@@ -34,6 +34,7 @@ void BinTreeCreate_1(BinTree* t);
 void BinTreeCreate_2(BinTree* t);
 void BinTreeCreate_3(BinTree* t,char*str, int*i);
 void BinTreeCreateBy_LVR_LRV(BinTree* t, char*lvr, char*lrv, int n);
+void BinTreeCreateBy_VLR_LVR(BinTree* t, char*vlr, char*lvr, int n);
 void PreOrder(BinTree* t);
 void PreOrderNr(BinTree* t);
 void InOrder(BinTree* t);

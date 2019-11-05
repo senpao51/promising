@@ -130,6 +130,24 @@ void BinTreeCreateBy_LVR_LRV(BinTree* t, char*lvr, char*lrv, int n)
 {
 	t->root = _BinTreeCreateBy_LVR_LRV(lvr, lrv, n);
 }
+//根据前序遍历和中序遍历创造二叉树
+BinTreeNode*_BinTreeCreateBy_VLR_LVR(char*vlr, char*lvr, int n)
+{
+	if (n == 0)
+		return 0;
+	int k = 0;
+	while (vlr[0] != lvr[k])
+		k++;
+	BinTreeNode*t = (BinTreeNode*)malloc(sizeof(BinTreeNode));
+	t->data = vlr[0];
+	t->leftchild = _BinTreeCreateBy_VLR_LVR(vlr+1,lvr,k);
+	t->rightchild = _BinTreeCreateBy_VLR_LVR(vlr+k+1,lvr+k+1,n-k-1);
+	return t;
+}
+void BinTreeCreateBy_VLR_LVR(BinTree* t, char*vlr, char*lvr, int n)
+{
+	t->root = _BinTreeCreateBy_VLR_LVR(vlr,lvr,n);
+}
 
 
 //前序(递归)
