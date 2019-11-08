@@ -6,5 +6,6 @@
 #include <stdlib.h>
 
 
-
+void PrintArr(int*arr, int left, int right);
+SortMethods(int*arr, int left, int right);
 void TwoWayInsertSort(int*arr, int left, int right);

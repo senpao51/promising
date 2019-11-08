@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS 1
+#define _CRT_SECURE_NO_WARNINGS 1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
 #include "sort.h"
 int main()
 {
@@ -6,6 +6,8 @@ int main()
 	int n = sizeof(arr) / sizeof(arr[0]);
 	int left = 0;
 	int right = n - 1;
-	TwoWayInsertSort(arr,left,right);
+	PrintArr(arr,0,n-1);
+	SortMethods(arr,left,right);
+	//TwoWayInsertSort(arr,left,right);
 	return 0;
 }

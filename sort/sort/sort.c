@@ -1,5 +1,24 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include "sort.h"
+
+void PrintArr(int*arr, int left, int right)
+{
+	int i = 0;
+	for (i = left; i <= right; i++)
+	{
+		printf("%d ",arr[i]);
+	}
+	printf("\n");
+}
+SortMethods(int*arr, int left, int right)
+{
+	int i = 0;
+	for (i = left; i <= right; i++)
+	{
+		if (arr[i] > arr[i + 1])
+			Swap(&(arr[i]),&(arr[i+1]));
+	}
+}
 void TwoWayInsertSort(int*arr, int left, int right)
 {
 	int i = 0;
