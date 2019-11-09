@@ -7,7 +7,13 @@ int main()
 	int left = 0;
 	int right = n - 1;
 	PrintArr(arr,0,n-1);
-	SortMethods(arr,left,right);
+	//SortMethods(arr,left,right);
+	//PrintArr(arr, 0, n - 1);
+
 	//TwoWayInsertSort(arr,left,right);
+	//ShellSort(arr, left, right);
+	SelectSort(arr,left,right);
+	PrintArr(arr, 0, n - 1);
+
 	return 0;
 }
