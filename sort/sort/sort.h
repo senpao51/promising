@@ -11,5 +11,7 @@ SortMethods(int*arr, int left, int right);
 void TwoWayInsertSort(int*arr, int left, int right);
 void ShellSort(int*arr, int left, int right);
 void SelectSort(int*arr, int left, int right);
+void RadixSort(int*arr, int left, int right);
+
 
 
