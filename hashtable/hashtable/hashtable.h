@@ -6,32 +6,27 @@
 #include <stdlib.h>
 
 
-//#define DataType int
-//
-//
-//#define P 13
-//typedef struct HashNode
-//{
-//	DataType data;
-//	struct HashNode* link;
-//}HashNode;
-//
-//
-//
-//typedef HashNode* HashTable[P];
-//
-//
-//
-//
-//void HashTableInit(HashTable pht);
-//bool HashTableInsert(HashTable pht,DataType x);
+#define DataType int
 
 
-#define P 7
-#define NULL_DATA -1
-struct bucket_node
+#define P 13
+typedef struct HashNode
 {
-	int data[3];
-	struct bucket_node*next;
-};
-struct bucket_node hash_table[P];
+	DataType data;
+	struct HashNode* link;
+}HashNode;
+
+
+
+typedef HashNode* HashTable[P];
+
+
+
+
+void HashTableInit(HashTable pht);
+bool HashTableInsert(HashTable pht,DataType x);
+bool HashTableRemove(HashTable pht, DataType key);
+void HashTableShow(HashTable pht);
+
+
+
