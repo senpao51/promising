@@ -7,7 +7,7 @@
 
 
 void PrintArr(int*arr, int left, int right);
-SortMethods(int*arr, int left, int right);
+void SortMethods(int*arr, int left, int right);
 void TwoWayInsertSort(int*arr, int left, int right);
 void ShellSort(int*arr, int left, int right);
 void SelectSort(int*arr, int left, int right);

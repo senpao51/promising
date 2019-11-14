@@ -11,31 +11,33 @@ void PrintArr(int*arr, int left, int right)
 	int i = 0;
 	for (i = left; i <= right; i++)
 	{
-		printf("%d ",arr[i]);
+		printf("%d ", arr[i]);
 	}
 	printf("\n");
 }
-SortMethods(int*arr, int left, int right)
+
+void SortMethods(int*arr, int left, int right)
 {
 	int i = 0;
 	for (i = left; i < right; i++)
 	{
 		int j = 0;
-		for (j = left; j<right -i- 1; i++)
+		for (j = left; j<=right -i-1; j++)
 		{
 			if (arr[j] > arr[j + 1])
 				Swap(&(arr[j]), &(arr[j + 1]));
 		}
 	}
 }
+//¶şÂ·²åÈëÅÅĞò
 void TwoWayInsertSort(int*arr, int left, int right)
 {
-	int k = 0;
 	int n = right - left + 1;
 	int*tmp = (int*)malloc(sizeof(int)*n);
-	int first=0, final=0;
+	int first = 0, final = 0;
+	int i=0,k = 0;
 	tmp[0] = arr[left];
-	for (int i = left + 1; i <= right; i++)
+	for (i = left + 1; i <= right; i++)
 	{
 		if (arr[i] < tmp[first])
 		{
@@ -43,22 +45,24 @@ void TwoWayInsertSort(int*arr, int left, int right)
 			tmp[first] = arr[i];
 		}
 		else if (arr[i]>tmp[final])
+		{
 			tmp[++final] = arr[i];
+		}
 		else
 		{
-			int end = final;
-			while (arr[i] < tmp[end])
+			int end = first;
+			while (arr[i] > tmp[end])
 			{
-				tmp[(end + 1)%n] = tmp[end];
-				end = (end - 1 + n) % n;
+				tmp[(end-1+n)%n] = tmp[end];
+				end = (end+1) % n;
 			}
-			tmp[(end + 1) % n] = arr[i];
-			final++;
+			tmp[(end - 1 + n) % n] = arr[i];
+			first = (first - 1 + n) % n;
 		}
 	}
-	for (int i = first; k<n;k++)
+	for (i = first; k < n;)
 	{
-		arr[k] = tmp[i];
+		arr[k++] = tmp[i];
 		i = (i + 1) % n;
 	}
 	free(tmp);
@@ -68,7 +72,7 @@ void TwoWayInsertSort(int*arr, int left, int right)
 //Ï£¶ûÅÅĞò
 void  _ShellSort(int*arr, int left, int right, int gap)
 {
-	for (int i = left + 1; i <= right-gap; i++)
+	for (int i = left ; i <= right-gap; i++)
 	{
 		int end = i;
 		int tmp = arr[end + gap];

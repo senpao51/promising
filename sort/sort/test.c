@@ -11,10 +11,10 @@ int main()
 	//SortMethods(arr,left,right);
 	//PrintArr(arr, 0, n - 1);
 
-	//TwoWayInsertSort(arr,left,right);
+	TwoWayInsertSort(arr,left,right);
 	//ShellSort(arr, left, right);
 	//SelectSort(arr,left,right);
-	RadixSort(arr,left,right);
+	//RadixSort(arr,left,right);
 	PrintArr(arr, 0, n - 1);
 
 	return 0;
