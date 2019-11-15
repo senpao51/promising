@@ -74,6 +74,7 @@ void  _ShellSort(int*arr, int left, int right, int gap)
 {
 	for (int i = left ; i <= right-gap; i++)
 	{
+		int a = 0;
 		int end = i;
 		int tmp = arr[end + gap];
 		while (end>=left&&tmp<arr[end])
@@ -82,6 +83,7 @@ void  _ShellSort(int*arr, int left, int right, int gap)
 			end -= gap;
 		}
 		arr[end + gap] = tmp;
+		a++;
 	}
 }
 int dlta[] = {5,3,2,1};
