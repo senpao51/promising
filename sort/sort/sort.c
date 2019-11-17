@@ -74,19 +74,20 @@ void  _ShellSort(int*arr, int left, int right, int gap)
 {
 	for (int i = left ; i <= right-gap; i++)
 	{
-		int a = 0;
 		int end = i;
 		int tmp = arr[end + gap];
-		while (end>=left&&tmp<arr[end])
+		while (end >=left&&tmp < arr[end])
 		{
 			arr[end + gap] = arr[end];
-			end -= gap;
+			end = end - gap;
 		}
 		arr[end + gap] = tmp;
-		a++;
 	}
 }
 int dlta[] = {5,3,2,1};
+
+
+
 void ShellSort(int*arr, int left, int right)
 {
 	int n = sizeof(dlta) / sizeof(dlta[0]);
@@ -96,38 +97,86 @@ void ShellSort(int*arr, int left, int right)
 	}
 }
 
-
 int GetMinIndex(int*arr, int left, int right)
 {
 	int min = arr[left];
-	int index = min;
-	for (int i = left + 1; i <= right;i++)
+	int index = left;
+	int i = left;
+	while (i <= right)
 	{
-		if (arr[i] < min)
+		if (min > arr[i])
 		{
 			min = arr[i];
 			index = i;
 		}
+		i++;
 	}
 	return index;
 }
 void SelectSort(int*arr, int left, int right)
 {
-	for (int i = left; i < right; i++)
+	for (int i = left; i <= right; i++)
 	{
-		int index = GetMinIndex(arr, left,right);
+		int index = GetMinIndex(arr,i,right);
 		if (index != i)
 		{
-			Swap(&arr[i],&arr[index]);
+			Swap(&(arr[index]),&(arr[i]));
 		}
 	}
 }
-
+#include "slist.h"
 #define K 3
+#define RADIX 10
+Slist mylist[RADIX];
+
+int GetKey(int data, int k)
+{
+	int key = 0;
+	while (k--)
+	{
+		key = data % 10;
+		data /= 10;
+	}
+	return key;
+}
+void Distribute(int* arr, int left, int right, int k)
+{
+	for (int i = left; i <= right; i++)
+	{
+		int key = GetKey(arr[i],k);
+		SlistPushBack(&mylist[key],arr[i]);
+	}
+}
+
+void Collect(int*arr)
+{
+	int k = 0;
+	for (int i = 0; i < RADIX; i++)
+	{
+		if (!SlistEmpty(&mylist[i]))
+		{
+			SlistNode* p= mylist[i].first->next;
+			while (p != NULL)
+			{
+				arr[k++] = p->data;
+				p = p->next;
+			}
+		}
+	}
+	for (int i = 0; i < RADIX; i++)
+	{
+		SlistClear(&mylist[i]);
+	}
+}
 void RadixSort(int*arr, int left, int right)
 {
-	for (int i = 0; i < K; i++)
+	for (int i =0; i < RADIX; i++)
 	{
-
+		SlistInit(&mylist[i]);
+	}
+	for (int i = 1; i < K+1; i++)
+	{
+		Distribute(arr,left,right,i);
+		Collect(arr);
 	}
 }
