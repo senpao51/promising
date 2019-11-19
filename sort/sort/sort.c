@@ -32,12 +32,10 @@ void InsertSort(int*arr, int left, int right)
 }
 void BubbleSort(int*arr, int left, int right)
 {
-	int i = 0;
 	int n = right - left + 1;
-	for (i = left; i < n; i++)
+	for (int i = left; i < n; i++)
 	{
-		int j = 0;
-		for (j = left; j < n-i-1; j++)
+		for (int j = left; j < n - 1 - i; j++)
 		{
 			if (arr[j]>arr[j + 1])
 				Swap(&arr[j],&arr[j+1]);
@@ -89,14 +87,16 @@ void TwoWayInsertSort(int*arr, int left, int right)
 int dlta[] = { 5, 3, 2, 1 };
 void  _ShellSort(int*arr, int left, int right, int gap)
 {
-	for (int i = left; i < right - gap; i++)
+	for (int i = left; i <=right - gap; i++)
 	{
 		int end = i;
 		int tmp = arr[end+gap];
 		while (end>=left&&tmp < arr[end])
 		{
-
+			arr[end + gap] = arr[end];
+			end -= gap;
 		}
+		arr[end + gap] = tmp;
 	}
 }
 
@@ -113,38 +113,35 @@ void ShellSort(int*arr, int left, int right)
 //选择排序
 int GetMinIndex(int*arr, int left, int right)
 {
-	int min = arr[left];
 	int index = left;
-	int i = left;
-	while (i <= right)
+	for (int i = left + 1; i <= right; i++)
 	{
-		if (min > arr[i])
+		if (arr[i] <arr[index])
 		{
-			min = arr[i];
 			index = i;
 		}
-		i++;
 	}
 	return index;
 }
 void SelectSort(int*arr, int left, int right)
 {
-	for (int i = left; i <= right; i++)
+	for (int i = left; i <right; i++)
 	{
 		int index = GetMinIndex(arr,i,right);
 		if (index != i)
 		{
-			Swap(&(arr[index]),&(arr[i]));
+			Swap(&arr[index],&arr[i]);
 		}
 	}
 }
+
 //堆排
 void _AdjustDown(int*arr, int left, int right, int start)
 {
 	int n = right - left + 1;
 	int i = start;
-	int j = 2*i + 1;
-	while (j < n)
+	int j = 2 * i + 1;
+	while (j<n)
 	{
 		if (j + 1 < n&&arr[j] < arr[j + 1])
 			j++;
@@ -152,7 +149,7 @@ void _AdjustDown(int*arr, int left, int right, int start)
 		{
 			Swap(&arr[i], &arr[j]);
 			i = j;
-			j = 2*i + 1;
+			j = 2 * i + 1;
 		}
 		else
 			break;
@@ -162,35 +159,36 @@ void HeapSort(int*arr, int left, int right)
 {
 	int n = right - left + 1;
 	int cur = n / 2 - 1;
-	while (cur>=0)
+	while (cur >= 0)
 	{
 		_AdjustDown(arr,left,right,cur);
 		cur--;
 	}
 	int end = right;
-	while (end > left)
+	while (end >left)
 	{
 		Swap(&arr[0],&arr[end]);
 		end--;
 		_AdjustDown(arr,left,end,0);
 	}
 }
-//快排
-int _Partition_1(int*arr, int left, int right)//交换数值
-{
-	int key = arr[left];
-	while (left < right)
-	{
-		while (left<right&&arr[right]>=key)
-			right--;
-		Swap(&arr[right], &arr[left]);
-		while (left<right&&arr[left] < key)
-			left++;
-		Swap(&arr[right],&arr[left]);
-	}
-	return left;
-}
 
+//快排
+//int _Partition_1(int*arr, int left, int right)//交换数值
+//{
+//	int key = arr[left];
+//	while (left < right)
+//	{
+//		while (left<right&&arr[right]>=key)
+//			right--;
+//		Swap(&arr[right], &arr[left]);
+//		while (left<right&&arr[left] < key)
+//			left++;
+//		Swap(&arr[right],&arr[left]);
+//	}
+//	return left;
+//}
+//
 int _Partition_2(int*arr, int left, int right)
 {
 	int key = arr[left];
@@ -201,37 +199,50 @@ int _Partition_2(int*arr, int left, int right)
 		arr[left] = arr[right];
 		while (left<right&&arr[left] < key)
 			left++;
-		arr[right] = arr[left];
+		arr[right]= arr[left];
 	}
 	arr[left] = key;
 	return left;
 }
-
-int _Partition_3(int*arr, int left, int right)//前后指针法
+//
+//int _Partition_3(int*arr, int left, int right)//前后指针法
+//{
+//	int pos = left;
+//	int key = arr[left];
+//	for (int i = left + 1; i <= right; i++)
+//	{
+//		if (arr[i] < key)
+//		{
+//			pos++;
+//			if (pos != i)
+//				Swap(&arr[pos],&arr[i]);
+//		}
+//	}
+//	Swap(&arr[left],&arr[pos]);
+//	return pos;
+//}
+int _Partition_1(int*arr, int left, int right)
 {
-	int pos = left;
-	int key = arr[left];
-	for (int i = left + 1; i <= right; i++)
+	int mid = left + (right - left) / 2;
+	while (left < right)
 	{
-		if (arr[i] < key)
-		{
-			pos++;
-			if (pos != i)
-				Swap(&arr[pos],&arr[i]);
-		}
+		while (left<right&&arr[left] <arr[mid])
+			left++;
+		Swap(&arr[left],&arr[mid]);
+		while (left<right&&arr[right]>arr[mid])
+			right--;
+		Swap(&arr[right],&arr[mid]);
 	}
-	Swap(&arr[left],&arr[pos]);
-	return pos;
+	return mid;
 }
 void QuickSort(int*arr, int left, int right)
 {
-	if (left >= right)
+	if (left >=right)
 		return;
 	//int pos = _Partition_1(arr, left, right);
-	//int pos = _Partition_2(arr,left,right);
-	int pos = _Partition_3(arr,left,right);
-	QuickSort(arr,left,pos-1);
-	QuickSort(arr,pos+1,right);
+	int pos = _Partition_2(arr, left, right);
+	QuickSort(arr, left, pos);
+	QuickSort(arr, pos + 1, right);
 }
 
 //归并排序
@@ -305,11 +316,9 @@ void Collect(int*arr)
 				p = p->next;
 			}
 		}
-	}
-	for (int i = 0; i < RADIX; i++)
-	{
 		SlistClear(&mylist[i]);
 	}
+
 }
 void RadixSort(int*arr, int left, int right)
 {

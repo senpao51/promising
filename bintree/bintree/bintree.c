@@ -123,7 +123,7 @@ BinTreeNode*_BinTreeCreateBy_LVR_LRV(char*lvr, char*lrv, int n)
 	BinTreeNode* t = (BinTreeNode*)malloc(sizeof(BinTreeNode));
 	t->data = lvr[k];
 	t->rightchild = _BinTreeCreateBy_LVR_LRV(lvr+k+1,lrv+k,n-k-1);
-	t->leftchild = _BinTreeCreateBy_LVR_LRV(lvr,lrv,k);
+	t->leftchild = _BinTreeCreateBy_LVR_LRV(lvr, lrv, k);
 	return t;
 }
 void BinTreeCreateBy_LVR_LRV(BinTree* t, char*lvr, char*lrv, int n)

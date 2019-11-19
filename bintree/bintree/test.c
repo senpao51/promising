@@ -40,7 +40,7 @@ int main()
 //}
 //int main()
 //{
-//	char *str = "ABC##DE##F##G#H##";
+//	//char *str = "ABC##DE##F##G#H##";
 //	//char *str2 = "ABC##D##BD##C##";
 //	char* vlr = "ABCDEFGH";
 //	char *lvr = "CBEDFAGH";
@@ -54,10 +54,10 @@ int main()
 //	BinTreeInit(&bt);
 //	BinTreeInit(&btmp);
 //	//BinTreeCreate_1(&bt);
-//	BinTreeCreate_3(&bt,str,&i);
+//	//BinTreeCreate_3(&bt,str,&i);
 //	//BinTreeCreate_3(&btmp,str2, &j);
 //	//BinTreeCreateBy_LVR_LRV(&bt,lvr,lrv,n);
-//	//BinTreeCreateBy_VLR_LVR(&bt,vlr,lvr,n);
+//	BinTreeCreateBy_VLR_LVR(&bt,vlr,lvr,n);
 //	printf("VLR  :");
 //	PreOrder(&bt);
 //	printf("\n");
