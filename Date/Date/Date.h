@@ -5,6 +5,7 @@ using namespace std;
 class Date
 {
 	friend ostream& operator<<(ostream &out,const Date&d);
+	friend istream& operator>>(istream &in, const Date&d);
 public:
 	void DateExchangeStr(char*str);
 	long long TimeChangeTimestamp(const Date&d);
@@ -20,14 +21,14 @@ public:
 	int operator-(const Date& d);
 	Date& operator++();
 	Date operator++(int);
-	/*Date& operator--();
+	Date& operator--();
 	Date operator--(int);
 	bool operator>(const Date& d)const;
+	bool operator<=(const Date& d)const;
 	bool operator>=(const Date& d)const;
 	bool operator<(const Date& d)const;
-	bool operator<=(const Date& d)const;
 	bool operator==(const Date&d)const;
-	bool operator!=(const Date&d)const;*/
+	bool operator!=(const Date&d)const;
 private:
 	int _year;
 	int _month;
