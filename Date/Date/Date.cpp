@@ -59,8 +59,8 @@ int Date::GetDay()const
 long long Date::TimeChangeTimestamp(const Date&d)
 {
 	struct tm stm;
-	stm.tm_year = d._year- 1900;
-	stm.tm_mon = d._month - 1;
+	stm.tm_year = d._year-1900;
+	stm.tm_mon = d._month-1;
 	stm.tm_mday = d._day;
 	stm.tm_hour = d._hour;
 	stm.tm_min = d._minute;
@@ -70,8 +70,8 @@ long long Date::TimeChangeTimestamp(const Date&d)
 long long Date::TimeChangeTimestamp()
 {
 	struct tm stm;
-	stm.tm_year = _year - 1900;
-	stm.tm_mon = _month - 1;
+	stm.tm_year = _year-1900;
+	stm.tm_mon = _month-1;
 	stm.tm_mday = _day;
 	stm.tm_hour = _hour;
 	stm.tm_min = _minute;
