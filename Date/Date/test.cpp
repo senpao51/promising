@@ -8,6 +8,7 @@ void main()
 	Date dt4(1999, 12, 4);
 	Date dt5 =dt2--;
 	Date dt6;
+
 	//cin >>dt6 ;
 	//cout << dt6 << endl;
 	cout << (dt1 - dt3) << endl;
