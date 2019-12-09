@@ -140,7 +140,7 @@ Date Date::operator--(int)
 
 bool Date::operator>(const Date& d)const
 {
-	return _year > d._year || _month > d._month || _day > d._day || _hour > d._hour || _minute > d._minute || _second > d._second;
+	return true;
 }
 bool Date::operator<=(const Date&d)const
 {
@@ -160,5 +160,5 @@ bool Date::operator==(const Date&d)const
 }
 bool Date::operator!=(const Date&d)const
 {
-	return(!operator==(d));
+	return!(*this==d);
 }

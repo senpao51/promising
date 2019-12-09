@@ -12,7 +12,7 @@ int main()
 		SeqStackPush(&st,x);
 	}
 	SeqStackPeepTop(&st);
-	//SeqStackPop(&st);
+	SeqStackPop(&st);
 	SeqStackShow(&st);
 	return 0;
 }

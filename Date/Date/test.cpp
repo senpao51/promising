@@ -2,15 +2,20 @@
 #include "Date.h"
 void main()
 {
-	Date dt1(2019,12,4);
+	Date dt1(1840,10,1);
 	Date dt2 = dt1 + 7487;
-	Date dt3(1970,12,4);
+	Date dt3(1820,10,11);
 	Date dt4(1999, 12, 4);
 	Date dt5 =dt2--;
 	Date dt6;
+	cout << dt1 - dt3 << endl;
+	if (dt3 == dt4)
+		cout << "==" << endl;
+	else
+		cout << "!=" << endl;
 	//cin >>dt6 ;
 	//cout << dt6 << endl;
-	cout << (dt1 - dt3) << endl;
+	//cout << (dt1 - dt3) << endl;
 	//cout << dt2 << endl;
 }
 //#include<stdio.h>

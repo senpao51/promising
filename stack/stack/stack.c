@@ -23,7 +23,7 @@ bool SeqStackIsEmpty(SeqStack*ps)
 //增加栈的空间
 void SeqStackAddCapacity(SeqStack*ps)
 {
-	SeqStack* ptr = (SeqStack*)realloc(ps->base,sizeof(DataType)*(STACK_DEAFAULT+5));
+	DataType* ptr = (DataType*)realloc(ps->base,sizeof(DataType)*(STACK_DEAFAULT+5));
 	if (ptr == NULL)
 	{
 		printf("增容失败\n");
