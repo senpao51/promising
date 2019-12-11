@@ -140,19 +140,39 @@ Date Date::operator--(int)
 
 bool Date::operator>(const Date& d)const
 {
-	return true;
+	if (_year > d._year)
+		return true;
+	else if (_year<d._year)
+		return false;
+	else if (_month>d._month)
+		return true;
+	else if (_month<d._month)
+		return false;
+	else if (_day>d._day)
+		return true;
+	return false;
 }
 bool Date::operator<=(const Date&d)const
 {
-	return (!operator>(d));
+	return (!(*this==d));
 }
 bool Date::operator<(const Date&d)const
 {
-	return _year < d._year || _month < d._month || _day < d._day || _hour < d._hour || _minute < d._minute || _second < d._second;
+	if (_year < d._year)
+		return true;
+	else if (_year>d._year)
+		return false;
+	else if (_month<d._month)
+		return true;
+	else if (_month>d._month)
+		return false;
+	else if (_day < d._day)
+		return true;
+	return false;
 }
 bool Date::operator>=(const Date&d)const
 {
-	return(!operator<(d));
+	return(!(*this==d));
 }
 bool Date::operator==(const Date&d)const
 {
