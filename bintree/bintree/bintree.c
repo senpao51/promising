@@ -213,30 +213,20 @@ void _InOrderNr(BinTreeNode* t)
 	{
 		SeqStack st;
 		SeqStackInit(&st, _DEAFAULT_QUEUE_SIZE);
-		SeqStackPush(&st, t);
-		while (t ->leftchild!= NULL)
+		BinTreeNode*p = t;
+		do
 		{
-			SeqStackPush(&st, t->leftchild);
-			t = t->leftchild;
-		}
-		while (!SeqStackIsEmpty(&st))
-		{
-			BinTreeNode*q;
-			BinTreeNode* p = SeqStackPeepTop(&st);
-			SeqStackPop(&st);
-			printf("%c ",p->data);
-			if (!SeqStackIsEmpty(&st))
+			while (p != NULL)
 			{
-				p = SeqStackPeepTop(&st);
-				SeqStackPop(&st);
-				printf("%c ", p->data);
+				SeqStackPush(&st,p);
+				p = p->leftchild;
 			}
-			q = p->rightchild;
-			if (q!=NULL)
-				SeqStackPush(&st, q);
-			if (q!=NULL&&q->leftchild!=NULL)
-				SeqStackPush(&st, q->leftchild);
-		}
+			BinTreeNode*q = SeqStackPeepTop(&st);
+			SeqStackPop(&st);
+			printf("%c ",q->data);
+			if (q->rightchild != NULL)
+				p = q->rightchild;
+		} while (!SeqStackIsEmpty(&st)||p!=NULL);
 	}
 }
 void InOrderNr(BinTree* t)
@@ -265,31 +255,27 @@ void _PostOrderNr(BinTreeNode* t)
 	{
 		SeqStack st;
 		SeqStackInit(&st, _DEAFAULT_QUEUE_SIZE);
-		SeqStackPush(&st, t);
-		while (t->leftchild != NULL)
+		BinTreeNode*p = t;
+		BinTreeNode*pre = NULL;
+		do
 		{
-			SeqStackPush(&st, t->leftchild);
-			t = t->leftchild;
-		}
-		while (!SeqStackIsEmpty(&st))
-		{
-			BinTreeNode* q;
-			BinTreeNode* tmp;
-			BinTreeNode* p = SeqStackPeepTop(&st);
-			printf("%c ",p->data);
-			SeqStackPop(&st);
-			if (!SeqStackIsEmpty(&st))
+			while (p != NULL)
 			{
-				tmp = SeqStackPeepTop(&st);
-				q = tmp->rightchild;
-				if (q != NULL&&q != p)
-					SeqStackPush(&st, q);
-				if (q != NULL&&q->rightchild != NULL&&q != p)
-					SeqStackPush(&st, q->rightchild);
-				if (q != NULL&&q->leftchild != NULL&&q != p)
-					SeqStackPush(&st, q->leftchild);
+				SeqStackPush(&st, p);
+				p = p->leftchild;
 			}
-		}
+			BinTreeNode*q = SeqStackPeepTop(&st);
+			if (q->rightchild == NULL||q->rightchild == pre)
+			{
+				SeqStackPop(&st);
+				printf("%c ",q->data);
+				pre = q;
+			}
+			else
+			{
+				p = q->rightchild;
+			}
+		} while (!SeqStackIsEmpty(&st));
 	}
 }
 void PostOrderNr(BinTree* t)
