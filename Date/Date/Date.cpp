@@ -55,6 +55,15 @@ int Date::GetDay()const
 {
 	return _day;
 }
+int GetDayByYearMonth(int year,int month)
+{
+	int days[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	if (((year % 100 == 0 && year % 400 == 0) || (year % 100 != 0 && year % 4 == 0))&&month==2)
+	{
+		days[month-1]++;
+	}
+	return days[month-1];
+}
 //时间转时间戳
 long long Date::TimeChangeTimestamp(const Date&d)
 {
@@ -95,7 +104,7 @@ Date Date::operator+(int day)
 }
 Date Date::operator-(int day)
 {
-	Date d;
+	/*Date d;
 	long long timestamp = TimeChangeTimestamp();
 	timestamp = timestamp - day * 24 * 3600;
 	time_t tem = (time_t)timestamp;
@@ -106,7 +115,22 @@ Date Date::operator-(int day)
 	d._hour = ptm->tm_hour;
 	d._minute = ptm->tm_min;
 	d._second = ptm->tm_sec;
-	return d;
+	return d;*/
+	int mdays;
+	Date tmp = *this;
+	while (tmp._day - day < 1)
+	{
+		tmp._month--;
+		if (tmp._month < 1)
+		{
+			tmp._month = 12;
+			tmp._year--;
+		}
+		mdays = GetDayByYearMonth(tmp._year,tmp._month);
+		day -= mdays;
+	}
+	tmp._day -= day;
+	return tmp;
 }
 int Date::operator-(const Date&d)
 {

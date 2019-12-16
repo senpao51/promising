@@ -2,8 +2,9 @@
 #include "Date.h"
 void main()
 {
-	Date dt1(1840,10,1);
-	Date dt2 = dt1 + 7487;
+	Date dt1(2019,12,16);
+	Date dt2 = dt1 - 28;
+	cout << dt2 << endl;
 	Date dt3(1820,10,11);
 	Date dt4(1999, 12, 4);
 	Date dt5 =dt2--;
