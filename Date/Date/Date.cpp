@@ -55,15 +55,7 @@ int Date::GetDay()const
 {
 	return _day;
 }
-int GetDayByYearMonth(int year,int month)
-{
-	int days[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-	if (((year % 100 == 0 && year % 400 == 0) || (year % 100 != 0 && year % 4 == 0))&&month==2)
-	{
-		days[month-1]++;
-	}
-	return days[month-1];
-}
+
 //时间转时间戳
 long long Date::TimeChangeTimestamp(const Date&d)
 {
@@ -87,9 +79,18 @@ long long Date::TimeChangeTimestamp()
 	stm.tm_sec = _second;
 	return (long long)mktime(&stm);
 }
+int GetDayByYearMonth(int year, int month)//根据年月来算天数
+{
+	int days[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	if (((year % 100 == 0 && year % 400 == 0) || (year % 100 != 0 && year % 4 == 0)) && month == 2)
+	{
+		days[month - 1]++;
+	}
+	return days[month - 1];
+}
 Date Date::operator+(int day)
 {
-	Date d;
+	/*Date d;
 	long long timestamp = TimeChangeTimestamp();
 	timestamp = timestamp + day * 24 * 3600;
 	time_t tem = (time_t)timestamp;
@@ -99,9 +100,24 @@ Date Date::operator+(int day)
 	d._day = ptm->tm_mday;
 	d._hour = ptm->tm_hour;
 	d._minute = ptm->tm_min;
-	d._second = ptm->tm_sec;
-	return d;
+	d._second = ptm->tm_sec;*/
+	//return d;
+	Date tmp(*this);
+	int ret = GetDayByYearMonth(tmp._year,tmp._month);
+	tmp._day += day;
+	while (tmp._day>ret)
+	{
+		tmp._day -= ret;
+		tmp._month++;
+		if (tmp._month > 12)
+		{
+			tmp._year++;
+			tmp._month = 1;
+		}
+	}
+	return tmp;
 }
+
 Date Date::operator-(int day)
 {
 	/*Date d;
@@ -134,10 +150,55 @@ Date Date::operator-(int day)
 }
 int Date::operator-(const Date&d)
 {
-	long long timestamp1 = TimeChangeTimestamp();
-	long long timestamp2 = TimeChangeTimestamp(d);
-	int TimeStamp = (int)(timestamp1 - timestamp2);
-	return TimeStamp / (24 * 3600);
+	//long long timestamp1 = TimeChangeTimestamp();
+	//long long timestamp2 = TimeChangeTimestamp(d);
+	//int TimeStamp = (int)(timestamp1 - timestamp2);
+	//return TimeStamp / (24 * 3600);
+	Date big;
+	Date small;
+	if (*this > d)
+	{
+		big = *this;
+		small = d;
+	}
+	else
+	{
+		big = d;
+		small = *this;
+	}
+	int daygap = 0;
+	if (big._day <= small._day)
+	{
+		big._month--;
+		if (big._month < 1)
+		{
+			big._year--;
+			big._month = 12;
+		}
+		int ret = GetDayByYearMonth(big._year, big._month);
+		big._day += ret;
+	}
+	daygap = big._day - small._day;
+	if (big._month < small._month)
+	{
+		big._year--;
+		big._month += 12;
+	}
+	for (int i =1; i <=big._month-small._month; i++)
+	{
+		daygap += GetDayByYearMonth(big._year, i);
+	}
+	if (big._year >small._year)
+	{
+		for (int i = small._year; i < big._year; i++)
+		{
+			for (int j = 1; j <= 12; j++)
+			{
+				daygap += GetDayByYearMonth(i,j);
+			}
+		}
+	}
+	return daygap;
 }
 Date&Date::operator++()
 {
@@ -164,17 +225,7 @@ Date Date::operator--(int)
 
 bool Date::operator>(const Date& d)const
 {
-	if (_year > d._year)
-		return true;
-	else if (_year<d._year)
-		return false;
-	else if (_month>d._month)
-		return true;
-	else if (_month<d._month)
-		return false;
-	else if (_day>d._day)
-		return true;
-	return false;
+	return (_year > d._year) || (_year == d._year&&_month > d._month) || (_year == d._year&&_month == d._month&&_day > d._day);
 }
 bool Date::operator<=(const Date&d)const
 {
@@ -182,17 +233,7 @@ bool Date::operator<=(const Date&d)const
 }
 bool Date::operator<(const Date&d)const
 {
-	if (_year < d._year)
-		return true;
-	else if (_year>d._year)
-		return false;
-	else if (_month<d._month)
-		return true;
-	else if (_month>d._month)
-		return false;
-	else if (_day < d._day)
-		return true;
-	return false;
+	return (_year < d._year) || (_year == d._year&&_month < d._month) || (_year == d._year&&_month == d._month&&_day < d._day);
 }
 bool Date::operator>=(const Date&d)const
 {
@@ -205,4 +246,17 @@ bool Date::operator==(const Date&d)const
 bool Date::operator!=(const Date&d)const
 {
 	return!(*this==d);
+}
+int Date::GetWeek()
+{
+	//W = (Y - 1) + [(Y - 1) / 4] - [(Y - 1) / 100] + [(Y - 1) / 400] + D．
+	int D = 0;
+	int i = 0;
+	for (i = 1; i < _month; i++)
+	{
+		D += GetDayByYearMonth(_year, i);
+	}
+	D += _day;
+	int W = (_year - 1) + (_year - 1) / 4 - (_year - 1) / 100 + (_year - 1) / 400 + D;
+	return W % 7;
 }

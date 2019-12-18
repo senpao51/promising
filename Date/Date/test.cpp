@@ -3,16 +3,17 @@
 void main()
 {
 	Date dt1(2019,12,16);
-	Date dt2 = dt1 - 28;
+	cout << dt1.GetWeek() << endl;
+	Date dt2 = dt1 + 10000;
 	cout << dt2 << endl;
-	Date dt3(1820,10,11);
+	Date dt3(2000,12,18);
 	Date dt4(1999, 12, 4);
 	Date dt5 =dt2--;
 	Date dt6;
 	cout << dt1 - dt3 << endl;
-	if (dt3 == dt4)
+	/*if (dt3 > dt4)
 		cout << "==" << endl;
-	else
+	else*/
 		cout << "!=" << endl;
 	//cin >>dt6 ;
 	//cout << dt6 << endl;
