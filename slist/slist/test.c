@@ -116,7 +116,7 @@ int main()
 				  scanf("%d", &pos);
 				  printf("请输入要修改的值\n");
 				  scanf("%d", &val);
-				  SlistModifyPos(&mylist,pos,val);
+				  //SlistModifyPos(&mylist,pos,val);
 				  break;
 		}
 		case 10:
