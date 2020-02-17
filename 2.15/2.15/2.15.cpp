@@ -144,67 +144,67 @@ int main()
 //	size_t pos = s1.find_first_of(s2,3);
 //	cout << pos << endl;
 //}
-//int main()
-//{
-//	string s = "hello";
-//	s[2] = 'x';
-//	s.push_back('h');
-//	cout << s << endl;
-//	const char* str = "senpao";
-//	while (*str != '\0')
-//	{
-//		s.push_back(*str);
-//		str++;
-//	}
-//	cout << s << endl;
-//	s.append("love");
-//	cout << s << endl;
-//	s += "'\"'";
-//	cout << s << endl;
-//	char*arr = new char[20];
-//	strcpy(arr, s.c_str());
-//	for (int i = 0; i < strlen(arr); i++)
-//	{
-//		cout << arr[i];
-//	}
-//	cout << endl;
-//	//hexlohsenpaolove'"'
-//	s.append("love");
-//	size_t pos1 = s.find("ove",10);
-//	if (pos1 != string::npos)
-//	{
-//		cout << pos1 << endl;
-//	}
-//	else
-//	{
-//		cout << "error" << endl;
-//	}
-//	size_t pos2 = s.rfind("h",3);
-//	if (pos2 != string::npos)
-//	{
-//		cout << pos2 << endl;
-//	}
-//	else
-//	{
-//		cout << "error" << endl;
-//	}
-//	string s2 = s.substr(3);
-//	cout << s2 << endl;
-//	string s3 = "2w56.789.0@qq.com";
-//	size_t pos3 = s3.find('@');
-//	string s4 = s3.substr(pos3,3);
-//	cout << s4 << endl;
-//	size_t pos5 = s3.find('.');
-//	if (pos5 == string::npos)
-//	{
-//		cout << "error" << endl;
-//		return 0;
-//	}
-//	size_t pos6 = s3.find('.',pos5+1);
-//	string s5 = s3.substr(pos5+1,pos6-pos5);
-//	cout << s5 << endl;
-//	return 0;
-//}
+int main()
+{
+	string s = "hello";
+	s[2] = 'x';
+	s.push_back('h');
+	cout << s << endl;
+	const char* str = "senpao";
+	while (*str != '\0')
+	{
+		s.push_back(*str);
+		str++;
+	}
+	cout << s << endl;
+	s.append("love");
+	cout << s << endl;
+	s += "'\"'";
+	cout << s << endl;
+	char*arr = new char[20];
+	strcpy(arr, s.c_str());
+	for (int i = 0; i < strlen(arr); i++)
+	{
+		cout << arr[i];
+	}
+	cout << endl;
+	//hexlohsenpaolove'"'
+	s.append("love");
+	size_t pos1 = s.find("ove",10);
+	if (pos1 != string::npos)
+	{
+		cout << pos1 << endl;
+	}
+	else
+	{
+		cout << "error" << endl;
+	}
+	size_t pos2 = s.rfind("h",3);
+	if (pos2 != string::npos)
+	{
+		cout << pos2 << endl;
+	}
+	else
+	{
+		cout << "error" << endl;
+	}
+	string s2 = s.substr(3);
+	cout << s2 << endl;
+	string s3 = "2w56.789.0@qq.com";
+	size_t pos3 = s3.find('@');
+	string s4 = s3.substr(pos3,3);
+	cout << s4 << endl;
+	size_t pos5 = s3.find('.');
+	if (pos5 == string::npos)
+	{
+		cout << "error" << endl;
+		return 0;
+	}
+	size_t pos6 = s3.find('.',pos5+1);
+	string s5 = s3.substr(pos5+1,pos6-pos5);
+	cout << s5 << endl;
+	return 0;
+}
 //int main()
 //{
 //	string s("hello");

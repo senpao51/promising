@@ -10,6 +10,8 @@ namespace bit
 		friend ostream& operator<<(ostream&out,const string&s);
 	public:
 		typedef char* iterator;
+		typedef char* reverse_iterator;
+		static size_t npos;
 	public:
 		iterator begin()
 		{
@@ -46,6 +48,7 @@ namespace bit
 			if (new_m_capacity > m_capacity)
 			{
 				char* new_str = new char[new_m_capacity + 1];
+				memset(new_str,'\0',new_m_capacity+1);
 				memcpy(new_str,m_str,m_size);
 				m_capacity = new_m_capacity;
 				delete []m_str;
@@ -91,9 +94,69 @@ namespace bit
 		{
 			if (m_size+strlen(str) >= m_capacity)
 				reserve((m_size+strlen(str))* 2);
-
 			strcat(m_str,str);
 			m_size += strlen(str);
+		}
+		void operator+=(char*str)
+		{
+			append(str);
+		}
+		void operator+=(char ch)
+		{
+			push_back(ch);
+		}
+		const char*c_str()
+		{
+			return m_str;
+		}
+	public:
+		size_t Find(char ch, size_t pos = 0)const
+		{
+			char* s = m_str;
+			if (pos > 0)
+			{
+				for (int i = 0; i < pos; i++)
+				{
+					s++;
+				}
+			}
+			char* p = strchr(s,ch);//123abcdef c
+			if (p == nullptr)
+				return -1;
+			else
+			{
+				int count = 0;
+				while (s != p)
+				{
+					s++;
+					count++;
+				}
+				return count + pos;
+			}
+		}
+		size_t Find(char*str, size_t pos = 0)const
+		{
+			char*s = m_str;
+			if (pos > 0)
+			{
+				for (int i = 0; i < pos; i++)
+				{
+					s++;
+				}
+			}
+			char*p = strstr(s,str);
+			if (p == nullptr)
+				return -1;
+			else
+			{
+				int count = 0;
+				while (s != p)
+				{
+					s++;
+					count++;
+				}
+				return count + pos;
+			}
 		}
 	public:
 		string(char*s = "") :m_str(nullptr)
@@ -147,7 +210,8 @@ namespace bit
 		out << s.m_str;
 		return out;
 	}
-}
+	size_t string::npos = -1;
+};
 
 int main()
 {
@@ -181,7 +245,8 @@ int main()
 	cout << s4.size() << endl;
 	cout << s4.capacity() << endl;
 	s4.reserve(20);
-	cout << s4.capacity() << endl;
+	cout << "s4.capacity = "<<s4.capacity() << endl;
+	cout << "s4 = " << s4 << endl;
 	bit::string s5 = "hello hello";
 	s5.resize(10, 'a');
 	cout << s5 << endl;
@@ -200,8 +265,32 @@ int main()
 	cout << s6 << endl;
 	cout << s6.size() << endl;
 	cout << s6.capacity() << endl;
+	s6 += "senpao";
+	cout << s6 << endl;
+	cout << s6.size() << endl;
+	cout << s6.capacity() << endl;
+	s6 += 'c';
+	cout << s6 << endl;
+	cout << s6.size() << endl;
+	cout << s6.capacity() << endl;
+	const char* str = s6.c_str();
+	cout << str << endl;
+	cout << bit::string::npos << endl;
+	bit::string s7 = "hello world!";
+	size_t pos1 = s7.Find("od",5);
+	if (pos1 != bit::string::npos)
+	{
+		cout << pos1 << endl;
+	}
+	else
+	{
+		cout << "error" << endl;
+	}
+
 	return 0;
 }
+
+
 //int main()
 //{
 //	string s('a',10);
