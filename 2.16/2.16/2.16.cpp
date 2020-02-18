@@ -7,7 +7,8 @@ namespace bit
 {
 	class string
 	{
-		friend ostream& operator<<(ostream&out,const string&s);
+		friend ostream& operator<<(ostream&out,const bit::string&s);
+		friend istream& operator>>(istream&in,const bit::string&s);
 	public:
 		typedef char* iterator;
 		typedef char* reverse_iterator;
@@ -55,32 +56,18 @@ namespace bit
 				m_str = new_str;
 			}
 		}
-		void resize(int new_m_size,char ch = '\0')
+		void resize(int new_m_size, char ch = '\0')
 		{
-			if (new_m_size <= m_size)
-			{
-				for (int i = m_size-1; i >=new_m_size; i--)
-				{
-					m_str[i] = '\0';
-				}
-			}
-			else
+			if (new_m_size > m_size)
 			{
 				if (new_m_size > m_capacity)
 				{
-					char*new_str = new char[new_m_size*2];
-					memcpy(new_str,m_str,m_size);
-					delete[] m_str;
-					m_str = new_str;
-					m_capacity = new_m_size*2;
-				} 
-				for (int i = m_size; i <new_m_size; i++)
-				{
-					m_str[i] = ch;
+					reserve(new_m_size*2);
 				}
-				m_str[new_m_size] = '\0';
+				memset(m_str+m_size,ch,new_m_size-m_size);
 			}
 			m_size = new_m_size;
+			m_str[m_size] = '\0';
 		}
 	public:
 		void push_back(char ch)
@@ -92,7 +79,7 @@ namespace bit
 		}
 		void append(char*str)
 		{
-			if (m_size+strlen(str) >= m_capacity)
+			if (m_size+strlen(str) > m_capacity)
 				reserve((m_size+strlen(str))* 2);
 			strcat(m_str,str);
 			m_size += strlen(str);
@@ -112,27 +99,12 @@ namespace bit
 	public:
 		size_t Find(char ch, size_t pos = 0)const
 		{
-			char* s = m_str;
-			if (pos > 0)
+			for (int i = pos; i<size(); i++)
 			{
-				for (int i = 0; i < pos; i++)
-				{
-					s++;
-				}
+				if (m_str[i] == ch)
+					return i;
 			}
-			char* p = strchr(s,ch);//123abcdef c
-			if (p == nullptr)
-				return -1;
-			else
-			{
-				int count = 0;
-				while (s != p)
-				{
-					s++;
-					count++;
-				}
-				return count + pos;
-			}
+			return -1;
 		}
 		size_t Find(char*str, size_t pos = 0)const
 		{
@@ -210,6 +182,40 @@ namespace bit
 		out << s.m_str;
 		return out;
 	}
+	istream& operator>>(istream&in,bit::string&s)
+	{
+		char*str = (char*)malloc(10);
+		char*buf = str;
+		while ((*buf = getchar()) == ' ' || *buf == '\n')
+			;
+		int count = 0;
+		int capacity = 0;
+		while (1)
+		{
+			if (count % 10 == 0)
+			{
+				capacity = count * 2;
+				str = (char*)realloc(str,capacity);
+				buf = str + count;
+				*buf = getchar();
+				count++;
+			}
+			else if ((*buf = getchar()) == ' ' || *buf == '\n')
+			{
+				*(buf + count) = '\0';
+				break;
+			}
+			else
+			{
+				*buf = getchar();
+				buf++;
+				count++;
+			}
+		}
+		s.m_
+		return in;
+	}
+
 	size_t string::npos = -1;
 };
 
@@ -277,7 +283,7 @@ int main()
 	cout << str << endl;
 	cout << bit::string::npos << endl;
 	bit::string s7 = "hello world!";
-	size_t pos1 = s7.Find("od",5);
+	size_t pos1 = s7.Find('o',5);
 	if (pos1 != bit::string::npos)
 	{
 		cout << pos1 << endl;
