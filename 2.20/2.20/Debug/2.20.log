@@ -1,13 +1,20 @@
-﻿生成启动时间为 2020/2/20 19:25:56。
+﻿生成启动时间为 2020/2/21 19:50:49。
      1>项目“F:\code\promising\2.20\2.20\2.20.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
          F:\c\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt 2.20.cpp
          2.20.cpp
-     1>f:\code\promising\2.20\2.20\2.20.cpp(97): warning C4244: “参数”: 从“double”转换到“size_t”，可能丢失数据
-     1>f:\code\promising\2.20\2.20\2.20.cpp(48): warning C4018: “<”: 有符号/无符号不匹配
-                 f:\code\promising\2.20\2.20\2.20.cpp(42): 编译类 模板 成员函数“void Vector<int>::reserve(size_t)”时
-                 f:\code\promising\2.20\2.20\2.20.cpp(94): 参见对正在编译的函数 模板 实例化“void Vector<int>::reserve(size_t)”的引用
-                 f:\code\promising\2.20\2.20\2.20.cpp(85): 参见对正在编译的类 模板 实例化“Vector<int>”的引用
+     1>f:\code\promising\2.20\2.20\2.20.cpp(174): warning C4018: “<”: 有符号/无符号不匹配
+                 f:\code\promising\2.20\2.20\2.20.cpp(172): 编译类 模板 成员函数“Vector<int>::Vector(size_t,const T &)”时
+                 with
+                 [
+                     T=int
+                 ]
+                 f:\code\promising\2.20\2.20\2.20.cpp(353): 参见对正在编译的函数 模板 实例化“Vector<int>::Vector(size_t,const T &)”的引用
+                 with
+                 [
+                     T=int
+                 ]
+                 f:\code\promising\2.20\2.20\2.20.cpp(310): 参见对正在编译的类 模板 实例化“Vector<int>”的引用
        Link:
          F:\c\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\code\promising\2.20\Debug\2.20.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\code\promising\2.20\Debug\2.20.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\code\promising\2.20\Debug\2.20.lib" /MACHINE:X86 Debug\2.20.obj
          2.20.vcxproj -> F:\code\promising\2.20\Debug\2.20.exe
@@ -15,4 +22,4 @@
 
 生成成功。
 
-已用时间 00:00:00.88
+已用时间 00:00:00.85
