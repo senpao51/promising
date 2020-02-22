@@ -132,6 +132,31 @@ public:
 		}
 	}
 public:
+	bool operator==(const String&s)
+	{
+		return strcmp(m_str, s.m_str) == 0;
+	}
+	bool operator!=(const String&s)
+	{
+		return !(*this == s);
+	}
+	bool operator>(const String&s)
+	{
+		return strcmp(m_str, s.m_str) > 0;
+	}
+	bool operator<=(const String&s)
+	{
+		return !(*this > s);
+	}
+	bool operator<(const String&s)
+	{
+		return strcmp(m_str, s.m_str)< 0;
+	}
+	bool operator>=(const String&s)
+	{
+		return !(*this < s);
+	}
+public:
 	String(char*s = "") :m_str(nullptr)
 	{
 		this->m_capacity = this->m_size = strlen(s);
@@ -212,7 +237,7 @@ istream& operator>>(istream&in,String&s)
 	}
 	s.m_capacity = capacity;
 	s.m_size = count-1;
-	//delete[]s.m_str;//释放原有m_str的空间。如果是空串，在构造函数里有一个字节的空间
+	//delete[]s.m_str;//释放原有m_str的空间。如果是空串，那么在构造函数里也会有一个字节的空间，所以必须释放
 	s.m_str = str;
 	return in;
 }
@@ -220,87 +245,8 @@ size_t String::npos = -1;
 
 int main()
 {
-	String s9 = "hellobit";
-	s9.resize(8);
-	cout << s9 << endl;
-	cout << s9.size() << endl;
-	String s1("hello world!");
-	cout << s1 << endl;
-	String s2(s1);
-	cout << s2 << endl;
-	String s3("senpaolove");
-	cout << s3 << endl;
-	s3 = s2;
-	cout << s3 << endl;
-	String s4 = "Hello!";
-	String::iterator it =s3.begin();
-	while (it != s3.end())
-	{
-		cout << *it;
-		it++;
-	}
-	cout << endl;
-	for (int i = 0; i < s4.size(); i++)
-	{
-		cout << s4[i];
-	}
-	cout << endl;
-	s4.clear();
-	cout << s4 << endl;
-	cout << s4.size() << endl;
-	cout << s4.capacity() << endl;
-	s4.reserve(20);
-	cout << "s4.capacity = "<<s4.capacity() << endl;
-	cout << "s4 = " << s4 << endl;
-	String s5 = "hello hello";
-	s5.resize(10, 'a');
-	cout << s5 << endl;
-	cout << s5.capacity() << endl;
-	s5.push_back('c');
-	cout << s5 << endl;
-	cout << s5.capacity() << endl;
-	s5.push_back('b');
-	cout << s5 << endl;
-	cout << s5.capacity() << endl;
-	String s6 = "hello";
-	cout << s6 << endl;
-	cout << s6.size() << endl;
-	cout << s6.capacity() << endl;
-	s6.append("world!");
-	cout << s6 << endl;
-	cout << s6.size() << endl;
-	cout << s6.capacity() << endl;
-	s6 += "senpao";
-	cout << s6 << endl;
-	cout << s6.size() << endl;
-	cout << s6.capacity() << endl;
-	s6 += 'c';
-	cout << s6 << endl;
-	cout << s6.size() << endl;
-	cout << s6.capacity() << endl;
-	const char* str = s6.c_str();
-	cout << str << endl;
-	cout <<String::npos << endl;
-	String s7 = "hello world!";
-	size_t pos1 = s7.Find('o',5);
-	if (pos1 != String::npos)
-	{
-		cout << pos1 << endl;
-	}
-	else
-	{
-		cout << "error" << endl;
-	}
-	String s8;
-	cin >> s8;
-	cout << s8 << endl;
-	return 0;
+	String s1;
+	String s1 = "hello world!";
+	String s2 = s1;
+	String s3(s2);
 }
-
-
-//int main()
-//{
-//	string s('a',10);
-//	cout << s << endl;
-//	return 0;
-//}

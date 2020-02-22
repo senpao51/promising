@@ -1,4 +1,4 @@
-﻿生成启动时间为 2020/2/20 12:36:01。
+﻿生成启动时间为 2020/2/22 19:56:34。
      1>项目“F:\code\promising\2.16\2.16\2.16.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
          F:\c\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt 2.16.cpp
@@ -8,8 +8,7 @@
      1>f:\code\promising\2.16\2.16\2.16.cpp(62): warning C4018: “>”: 有符号/无符号不匹配
      1>f:\code\promising\2.16\2.16\2.16.cpp(103): warning C4018: “<”: 有符号/无符号不匹配
      1>f:\code\promising\2.16\2.16\2.16.cpp(115): warning C4018: “<”: 有符号/无符号不匹配
-     1>f:\code\promising\2.16\2.16\2.16.cpp(158): warning C4018: “<”: 有符号/无符号不匹配
-     1>f:\code\promising\2.16\2.16\2.16.cpp(243): warning C4018: “<”: 有符号/无符号不匹配
+     1>f:\code\promising\2.16\2.16\2.16.cpp(183): warning C4018: “<”: 有符号/无符号不匹配
        Link:
          F:\c\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\code\promising\2.16\Debug\2.16.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\code\promising\2.16\Debug\2.16.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\code\promising\2.16\Debug\2.16.lib" /MACHINE:X86 Debug\2.16.obj
          2.16.vcxproj -> F:\code\promising\2.16\Debug\2.16.exe
@@ -17,4 +16,4 @@
 
 生成成功。
 
-已用时间 00:00:03.12
+已用时间 00:00:01.02
