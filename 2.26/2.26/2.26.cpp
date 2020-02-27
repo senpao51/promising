@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS 1
+﻿#define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
 #include <list>
 using namespace std;
@@ -31,14 +31,112 @@ public:
 	template<typename T>
 	class ListIterator
 	{
+	public:
 		ListIterator() :Ptr(nullptr)
 		{}
+		ListIterator(ListNode<T>*p) :Ptr(p)
+		{}
+		~ListIterator()
+		{}
+	public:
+		ListNode<T>*GetNode()
+		{
+			return Ptr;
+		}
+	public:
+		ListIterator& operator++()
+		{
+			Ptr = Ptr->Next;
+			return *this;
+		}
+		ListIterator operator++(int)
+		{
+			ListIterator tmp(*this);
+			++*this;
+			return tmp;
+		}
+		ListIterator& operator--()
+		{
+			Ptr = Ptr->Prev;
+			return *this;
+		}
+		ListIterator operator--(int)
+		{
+			ListIterator tmp(*this);
+			--*this;
+			return tmp;
+		}
+	public:
+		bool operator==(const ListIterator&p)
+		{
+			return Ptr == p.Ptr;
+		}
+		bool operator!=(const ListIterator&p)
+		{
+			return !(*this == p);
+		}
+		T& operator*()
+		{
+			return Ptr->Val;
+		}
+		T* operator->()
+		{
+			return&(Ptr->Val);
+		}
 	private:
 		ListNode<T>*Ptr;
 	};
 public:
+	typedef ListIterator<T> iterator;
+	//typedef const ListIterator<T> const_iterator;
+public:
 	List() :Head(_BuyNode()), Size(0)
 	{}
+	List(size_t n, const T&value = T()) :Head(_BuyNode()), Size(0)
+	{
+		while (n--)
+			push_back(value);
+	}
+	List(T*p1, T*p2) :Head(_BuyNode()), Size(0)
+	{
+		while (p1 != p2)
+		{
+			push_back(*p1);
+			p1++;
+		}
+	}
+public:
+	void push_back(const T&value)
+	{
+		insert(end(), value);
+	}
+	void push_front(const T&value)
+	{
+		insert(begin(),value);
+	}
+	void insert(iterator pos, const T&value)
+	{
+		ListNode<T>*s = _BuyNode(value);
+		ListNode<T>*p = pos.GetNode();
+		s->Next = p;
+		s->Prev = p->Prev;
+		s->Prev->Next = s;
+		s->Next->Prev = s;
+		Size++;
+	}
+	void insert(iterator pos, size_t n, const T&value)
+	{
+		while (n--)
+			insert(pos,value);
+	}
+	void insert(iterator pos, iterator p1, iterator p2)
+	{
+		while (p1 != p2)
+		{
+			insert(pos, *p1);
+			p1++;
+		}
+	}
 	ListNode<T>* _BuyNode(const T&value = T())
 	{
 		ListNode<T>*p = new ListNode<T>;
@@ -46,6 +144,23 @@ public:
 		p->Val = value;
 		return p;
 	}
+public:
+	iterator begin()const
+	{
+		return iterator(Head->Next);
+	}
+	/*const_iterator begin()const
+	{
+		return const_iterator(Head->Next);
+	}*/
+	iterator end()const
+	{
+		return iterator(Head);
+	}
+	/*const_iterator end()const
+	{
+		return const_iterator(Head);
+	}*/
 private:
 	ListNode<T>* Head;
 	size_t Size;
@@ -53,8 +168,29 @@ private:
 
 int main()
 {
-	List<int>t;
-	cout << t.size() << endl;
+
+	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	List<int>t(10,2);
+	List<int>t1(arr, arr + 9);
+	t.insert(t.begin(),t1.begin(),t1.end());
+	//cout << t.size() << endl;
+	/*t.insert(t.begin(), 10);
+	t.insert(t.begin(), 10);
+	t.insert(t.begin(), 10);
+	t.insert(t.begin(), 10);
+	t.insert(t.begin(), 10);
+	t.insert(t.begin(), 10);
+	t.insert(t.begin(), 10);
+	t.insert(t.begin(), 5, 5);
+	t.push_back(0);*/
+	list<int>::iterator it = t.begin();
+	while (it != t.end())
+	{
+		cout << *it << "-->";
+		it++;
+	}
+	cout <<"over"<< endl;
+
 	return 0;
 }
 //int main()
