@@ -137,6 +137,7 @@ public:
 			p1++;
 		}
 	}
+	iterator()
 	ListNode<T>* _BuyNode(const T&value = T())
 	{
 		ListNode<T>*p = new ListNode<T>;
@@ -183,7 +184,7 @@ int main()
 	t.insert(t.begin(), 10);
 	t.insert(t.begin(), 5, 5);
 	t.push_back(0);*/
-	list<int>::iterator it = t.begin();
+	List<int>::iterator it = t.begin();
 	while (it != t.end())
 	{
 		cout << *it << "-->";
