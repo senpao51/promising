@@ -1,6 +1,7 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
 #include <list>
+#include <vld.h>
 using namespace std;
 template<typename T>
 class ListNode
@@ -16,6 +17,64 @@ public:
 	T Val;
 };
 template<typename T>
+class ListIterator
+{
+public:
+	ListIterator() :Ptr(nullptr)
+	{}
+	ListIterator(ListNode<T>*p) :Ptr(p)
+	{}
+	~ListIterator()
+	{}
+public:
+	ListNode<T>*GetNode()
+	{
+		return Ptr;
+	}
+public:
+	ListIterator& operator++()
+	{
+		Ptr = Ptr->Next;
+		return *this;
+	}
+	ListIterator operator++(int)
+	{
+		ListIterator tmp(*this);
+		++*this;
+		return tmp;
+	}
+	ListIterator& operator--()
+	{
+		Ptr = Ptr->Prev;
+		return *this;
+	}
+	ListIterator operator--(int)
+	{
+		ListIterator tmp(*this);
+		--*this;
+		return tmp;
+	}
+public:
+	bool operator==(const ListIterator&p)
+	{
+		return Ptr == p.Ptr;
+	}
+	bool operator!=(const ListIterator&p)
+	{
+		return !(*this == p);
+	}
+	T& operator*()
+	{
+		return Ptr->Val;
+	}
+	T* operator->()
+	{
+		return&(Ptr->Val);
+	}
+private:
+	ListNode<T>*Ptr;
+};
+template<typename T>
 class List
 {
 public:
@@ -28,67 +87,8 @@ public:
 		return Size == 0;
 	}
 public:
-	template<typename T>
-	class ListIterator
-	{
-	public:
-		ListIterator() :Ptr(nullptr)
-		{}
-		ListIterator(ListNode<T>*p) :Ptr(p)
-		{}
-		~ListIterator()
-		{}
-	public:
-		ListNode<T>*GetNode()
-		{
-			return Ptr;
-		}
-	public:
-		ListIterator& operator++()
-		{
-			Ptr = Ptr->Next;
-			return *this;
-		}
-		ListIterator operator++(int)
-		{
-			ListIterator tmp(*this);
-			++*this;
-			return tmp;
-		}
-		ListIterator& operator--()
-		{
-			Ptr = Ptr->Prev;
-			return *this;
-		}
-		ListIterator operator--(int)
-		{
-			ListIterator tmp(*this);
-			--*this;
-			return tmp;
-		}
-	public:
-		bool operator==(const ListIterator&p)
-		{
-			return Ptr == p.Ptr;
-		}
-		bool operator!=(const ListIterator&p)
-		{
-			return !(*this == p);
-		}
-		T& operator*()
-		{
-			return Ptr->Val;
-		}
-		T* operator->()
-		{
-			return&(Ptr->Val);
-		}
-	private:
-		ListNode<T>*Ptr;
-	};
-public:
 	typedef ListIterator<T> iterator;
-	//typedef const ListIterator<T> const_iterator;
+	typedef const ListIterator<T> const_iterator;
 public:
 	List() :Head(_BuyNode()), Size(0)
 	{}
@@ -105,6 +105,13 @@ public:
 			p1++;
 		}
 	}
+	~List()
+	{
+		clear();
+		delete Head;
+		Head = nullptr;
+		Size = 0;
+	}
 public:
 	void push_back(const T&value)
 	{
@@ -113,6 +120,10 @@ public:
 	void push_front(const T&value)
 	{
 		insert(begin(),value);
+	}
+	void clear()
+	{
+		erase(begin(),end());
 	}
 	void insert(iterator pos, const T&value)
 	{
@@ -137,7 +148,23 @@ public:
 			p1++;
 		}
 	}
-	iterator()
+	iterator erase(iterator pos)
+	{
+		ListNode<T>*p = pos.GetNode();
+		iterator s = ++pos;
+		p->Prev->Next = p->Next;
+		p->Next->Prev = p->Prev;
+		delete p;
+		Size--;
+		return s;
+	}
+	void erase(iterator pos1, iterator pos2)
+	{
+		while (pos1 != pos2)
+		{
+			pos1 = erase(pos1);
+		}
+	}
 	ListNode<T>* _BuyNode(const T&value = T())
 	{
 		ListNode<T>*p = new ListNode<T>;
@@ -146,22 +173,22 @@ public:
 		return p;
 	}
 public:
-	iterator begin()const
+	iterator begin()
 	{
 		return iterator(Head->Next);
 	}
-	/*const_iterator begin()const
+	const_iterator begin()const
 	{
 		return const_iterator(Head->Next);
-	}*/
-	iterator end()const
+	}
+	iterator end()
 	{
 		return iterator(Head);
 	}
-	/*const_iterator end()const
+	const_iterator end()const
 	{
 		return const_iterator(Head);
-	}*/
+	}
 private:
 	ListNode<T>* Head;
 	size_t Size;
@@ -184,6 +211,7 @@ int main()
 	t.insert(t.begin(), 10);
 	t.insert(t.begin(), 5, 5);
 	t.push_back(0);*/
+	//auto p = find(t.begin(),t.end(),2);
 	List<int>::iterator it = t.begin();
 	while (it != t.end())
 	{
