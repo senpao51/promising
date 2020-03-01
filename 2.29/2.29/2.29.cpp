@@ -6,16 +6,43 @@
 #include <list>
 #include <string>
 using namespace std;
+int StrToInt(string str)
+{
+	int sum = 0;
+	int i = 0;
+	if (str.size() == 0)
+		return 0;
+	auto p = str.rbegin();
+	while (p != str.rend())
+	{
+		if (*p <= 9 && *p >= 0)
+			sum += pow(*p, i);
+		else if (p == str.rend() - 1 && *p == '-')
+			sum *= -1;
+		else
+			return 0;
+		p++;
+	}
+	return sum;
+}
 int main()
 {
-	priority_queue<string>	Q;
-	Q.push("abc");
-	Q.push("abcd00");
-	Q.push("h");
-	Q.push("fdgfdgklhi");
-	cout << Q.top() << endl;
+	string s = "+345678";
+	auto p = s.rend()-1;
+	cout << *p << endl;
+	cout<<StrToInt(s) << endl;
 	return 0;
 }
+//int main()
+//{
+//	priority_queue<string>	Q;
+//	Q.push("abc");
+//	Q.push("abcd00");
+//	Q.push("h");
+//	Q.push("fdgfdgklhi");
+//	cout << Q.top() << endl;
+//	return 0;
+//}
 //template<typename T,class Cont = deque<T>>
 //class Queue
 //{
