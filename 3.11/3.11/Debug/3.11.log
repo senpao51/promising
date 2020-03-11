@@ -1,0 +1,13 @@
+﻿生成启动时间为 2020/3/11 21:39:21。
+     1>项目“F:\code\promising\3.11\3.11\3.11.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         F:\c\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt 3.11.cpp
+         3.11.cpp
+     1>f:\code\promising\3.11\3.11\3.11.cpp(11): error C2039: “show”: 不是“A”的成员
+                 f:\code\promising\3.11\3.11\3.11.cpp(6) : 参见“A”的声明
+     1>f:\code\promising\3.11\3.11\3.11.cpp(13): error C2597: 对非静态成员“A::m”的非法引用
+     1>已完成生成项目“F:\code\promising\3.11\3.11\3.11.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:00.44
