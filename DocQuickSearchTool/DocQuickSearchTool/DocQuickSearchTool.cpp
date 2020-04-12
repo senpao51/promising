@@ -1,10 +1,10 @@
 #include "Common.h"
 #include "SysTool.h"
-int main()
-{
-	string path = "D:\\搜狗高速下载";
-	vector<string>subdir, subfile;
-	//DirectoryList(path,subdir,subfile);
-	TestSqlite();
-	return 0;
-}
+//int main()
+//{
+//	string path = "D:\\搜狗高速下载";
+//	vector<string>subdir, subfile;
+//	//DirectoryList(path,subdir,subfile);
+//	//TestSqlite();
+//	return 0;
+//}
