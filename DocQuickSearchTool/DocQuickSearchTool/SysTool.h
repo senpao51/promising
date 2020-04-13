@@ -1,16 +1,16 @@
 #pragma once 
 #include "Common.h"
 
-void DirectoryList(string &path, vector<string>&subdir, vector<string>&subfile);
+void DirectoryAdd(const string &path, vector<string>&subdir, vector<string>&subfile);
 
-/////////////////////////////////////////////////////////////////////////////////
-//日志模块
+/////////////////////////////////////////////////////////////////////////////////////
+//日志
 #ifndef __TRACE__
-//#define __TRACE__
+#define __TRACE__
 #endif
 
 #ifndef __DEBUG__
-//#define __DEBUG__
+#define __DEBUG__
 #endif
 
 ///////////////////////////////////////////////////////////////////////
@@ -50,7 +50,6 @@ inline static void __ErrorDebug(const char* filename, int line, const char* func
 #ifdef __DEBUG__
 	//输出调用函数的信息
 	fprintf(stdout, "[ERROR][%s:%d:%s]:", GetFileName(filename).c_str(), line, function);
-
 	//输出用户打的trace信息
 	va_list args;
 	va_start(args, format);

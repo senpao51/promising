@@ -44,6 +44,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -67,11 +68,13 @@
   <ItemGroup>
     <ClInclude Include="Common.h" />
     <ClInclude Include="DataManager.h" />
+    <ClInclude Include="ScanManager.h" />
     <ClInclude Include="SysTool.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DataManager.cpp" />
     <ClCompile Include="DocQuickSearchTool.cpp" />
+    <ClCompile Include="ScanManager.cpp" />
     <ClCompile Include="SysTool.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
