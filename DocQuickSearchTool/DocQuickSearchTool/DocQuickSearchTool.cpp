@@ -7,10 +7,10 @@ void TestSqlite()
 	SqliteManager sm;
 	string path = "test.db";
 	sm.Open(path);
-	//string table_db = "create table test_table(id int primamy key auto_increment,name varchar(20),path varchar(100));";
-	//sm.SqliteExec(table_db);
-	//string s1 = "insert into test_table values(1,'sql.pdf','c:\'),(2,'c++.pdf','d:\'),(3,'ok.pdf','e:\');";
-	//sm.SqliteExec(s1);
+	string table_db = "create table test_table(id int primamy key auto_increment,name varchar(20),path varchar(100));";
+	sm.SqliteExec(table_db);
+	string s1 = "insert into test_table values(1,'sql.pdf','c:\'),(2,'c++.pdf','d:\'),(3,'ok.pdf','e:\');";
+	sm.SqliteExec(s1);
 	char **result = nullptr;
 	int row = 0, col = 0;
 	string select = "select * from test_table";
@@ -23,20 +23,37 @@ void TestSqlite()
 	}
 	sqlite3_free_table(result);
 }
+
+void TestDataManager()
+{
+	DataManager dmg;
+	dmg.InitSqlite();
+	string path = "c:";
+	string name = "stl.pdf";
+	dmg.InsertDoc(path,name);
+	string path1 = "c:";
+	string name1 = "c++.pdf";
+	dmg.InsertDoc(path1, name1);
+	string path2 = "c:";
+	string name2 = "linux.pdf";
+	dmg.InsertDoc(path2, name2);
+	set<string>sql_set;
+	dmg.GetDocInfo(path,sql_set);
+	for (const auto&e : sql_set)
+		cout << e << "   ";
+	cout << endl;
+	//dmg.DeleteDoc(path,name);
+}
 void TestScanManager()
 {
 	ScanManager smg;
 	smg.ScanDirectory("D:\\ËÑ¹·¸ßËÙÏÂÔØ\\test");
 }
-void TestDataManager()
-{
-	DataManager dmg;
-	dmg.InitSqlite();
-}
 int main()
 {
 	//TestSqlite();
 	//TestScanManager();
-	TestDataManager();
+	//TestDataManager();
+	TestScanManager();
 	return 0;
 }
