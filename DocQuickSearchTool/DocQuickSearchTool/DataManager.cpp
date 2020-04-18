@@ -97,6 +97,13 @@ void DataManager::DeleteDoc(const string& path, const string&doc)
 	char sql[DEFAULT_SQL_SIZE] = { 0 };
 	sprintf(sql,"delete from %s where name = '%s' and path = '%s'",DEFAULT_TABLE,doc.c_str(),path.c_str());
 	smg.SqliteExec(sql);
+	//模糊删除目录下的子文件
+	string doc_path = path; //D:\搜狗高速下载\test
+	doc_path += "\\"; 
+	doc_path += doc; //D:\搜狗高速下载\test\\dir1_dir1
+	memset(sql,0,DEFAULT_SQL_SIZE);
+	sprintf(sql,"delete from %s where path like '%s%%'",DEFAULT_TABLE,doc_path.c_str());
+	smg.SqliteExec(sql);
 }
 void DataManager::GetDocInfo(const string&path, set<string>&sql_set)
 {
