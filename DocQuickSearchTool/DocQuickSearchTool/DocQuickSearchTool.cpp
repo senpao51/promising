@@ -49,11 +49,25 @@ void TestScanManager()
 	ScanManager smg;
 	smg.ScanDirectory("D:\\搜狗高速下载\\test");
 }
+void TestSerach()
+{
+	ScanManager smg;
+	smg.ScanDirectory("D:\\搜狗高速下载\\test");
+	DataManager dmg;
+	string name = "111"; 
+	vector<pair<string, string>>v;
+	dmg.Search(name,v);
+	for (const auto&e : v)
+	{
+		cout << e.first << "           " << e.second << endl;
+	}
+}
 int main()
 {
 	//TestSqlite();
 	//TestScanManager();
 	//TestDataManager();
-	TestScanManager();
+	//TestScanManager();
+	TestSerach();
 	return 0;
 }

@@ -111,8 +111,21 @@ void DataManager::GetDocInfo(const string&path, set<string>&sql_set)
 	sprintf(sql,"select name from %s where path = '%s'",DEFAULT_TABLE,path.c_str());
 	int row = 0, col = 0;
 	char**result = nullptr;
-	smg.GetSqliteTable(sql,result,row,col);
+	AutoGetTableResult at(&smg,sql,row,col,result);
 	for (int i = 1; i <= row; i++)
 		sql_set.insert(result[i]);
-	sqlite3_free_table(result);
+}
+
+void DataManager::Search(const string&key, vector<pair<string, string>>&SeaRes)
+{
+	char sql[DEFAULT_SQL_SIZE] = { 0 };
+	sprintf(sql, "select name,path from %s where name like '%%%s%%'", DEFAULT_TABLE,key.c_str());
+	char**result = nullptr;
+	SeaRes.clear();
+	int row = 0, col = 0;
+	AutoGetTableResult at(&smg, sql, row, col, result);;
+	for (int i = 1; i <= row; i++)
+	{
+		SeaRes.push_back(make_pair(result[i*col],result[i*col+1]));
+	}
 }
