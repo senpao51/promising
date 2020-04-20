@@ -24,36 +24,11 @@ void TestSqlite()
 	sqlite3_free_table(result);
 }
 
-void TestDataManager()
-{
-	DataManager dmg;
-	dmg.InitSqlite();
-	string path = "c:";
-	string name = "stl.pdf";
-	dmg.InsertDoc(path,name);
-	string path1 = "c:";
-	string name1 = "c++.pdf";
-	dmg.InsertDoc(path1, name1);
-	string path2 = "c:";
-	string name2 = "linux.pdf";
-	dmg.InsertDoc(path2, name2);
-	set<string>sql_set;
-	dmg.GetDocInfo(path,sql_set);
-	for (const auto&e : sql_set)
-		cout << e << "   ";
-	cout << endl;
-	//dmg.DeleteDoc(path,name);
-}
-void TestScanManager()
-{
-	ScanManager smg;
-	smg.ScanDirectory("D:\\搜狗高速下载\\test");
-}
 void TestSerach()
 {
-	ScanManager smg;
+	ScanManager &smg = ScanManager::GetScanManagerInstance("D:\\搜狗高速下载\\test");//只创建一个扫描实例
 	smg.ScanDirectory("D:\\搜狗高速下载\\test");
-	DataManager dmg;
+	DataManager &dmg = DataManager::GetDataManagerInstance();//只创建一个数据库管理实例
 	string name = "111"; 
 	vector<pair<string, string>>v;
 	dmg.Search(name,v);

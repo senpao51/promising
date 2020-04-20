@@ -71,6 +71,12 @@ void SqliteManager::GetSqliteTable(const string&sql, char**&result, int&row, int
 
 
 
+
+DataManager& DataManager::GetDataManagerInstance()
+{
+	static DataManager dm_inst;
+	return dm_inst;
+}
 DataManager::DataManager()
 {
 	smg.Open(DEFAULT_DB);

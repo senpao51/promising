@@ -4,9 +4,15 @@
 void DirectoryAdd(const string &path, vector<string>&subdir, vector<string>&subfile);
 
 /////////////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+string ChineseConvertPinYinAllSpell(const string& dest_chinese);//汉字转拼音
+string ChineseConvertPinYinInitials(const string& name);//汉字转首字母
 //日志
 #ifndef __TRACE__
-#define __TRACE__
+//#define __TRACE__
 #endif
 
 #ifndef __DEBUG__
