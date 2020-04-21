@@ -8,8 +8,9 @@ void DirectoryAdd(const string &path, vector<string>&subdir, vector<string>&subf
 
 /////////////////////////////////////////////////////////////////////////////////////
 
-string ChineseConvertPinYinAllSpell(const string& dest_chinese);//ºº×Ö×ªÆ´Òô
-string ChineseConvertPinYinInitials(const string& name);//ºº×Ö×ªÊ××ÖÄ¸
+string ChineseConvertPinYin(const string& dest_chinese);//ºº×Ö×ªÆ´Òô
+string ChineseConvertInitials(const string& name);//ºº×Ö×ªÊ××ÖÄ¸
+void ColourPrintf(const char* str);//×Ö·û¸ßÁÁ
 //ÈÕÖ¾
 #ifndef __TRACE__
 //#define __TRACE__

@@ -29,7 +29,7 @@ void TestSerach()
 	ScanManager &smg = ScanManager::GetScanManagerInstance("D:\\搜狗高速下载\\test");//只创建一个扫描实例
 	smg.ScanDirectory("D:\\搜狗高速下载\\test");
 	DataManager &dmg = DataManager::GetDataManagerInstance();//只创建一个数据库管理实例
-	string name = "111"; 
+	string name = "爱情公寓"; 
 	vector<pair<string, string>>v;
 	dmg.Search(name,v);
 	for (const auto&e : v)
@@ -37,12 +37,57 @@ void TestSerach()
 		cout << e.first << "           " << e.second << endl;
 	}
 }
+void TestColor()
+{
+	char*str = "hello";
+	cout << "world";
+	ColourPrintf(str);
+}
+
+void TestJieMain()
+{
+	while (1)
+	{
+		string name;
+		string path = "D:\\搜狗高速下载\\test";
+		cout << "请输入:";
+		cin >> name;
+		ScanManager& sm = ScanManager::GetScanManagerInstance(path);
+		sm.ScanDirectory(path);
+		DataManager& dm = DataManager::GetDataManagerInstance();
+		vector<pair<string, string>>v;
+		dm.Search(name,v);
+		printf("%-30s %-50s\n","名字","路径");
+		for (const auto&e : v)
+		{
+			printf("%-30s %-50s\n",e.first.c_str(),e.second.c_str());
+		}
+	}
+}
+
+void TestHighLight()
+{
+	DataManager&dm = DataManager::GetDataManagerInstance();
+	string str = "123比特科技XyZ,文档快速搜索神器，HaLo6666";
+	string key = "wdks";
+	string prefix, highlight, suffix;
+	dm.HighLight(str,key,prefix,highlight,suffix);
+	cout << prefix;
+	ColourPrintf(highlight.c_str());
+	cout << suffix << endl;
+}
 int main()
 {
 	//TestSqlite();
 	//TestScanManager();
 	//TestDataManager();
 	//TestScanManager();
-	TestSerach();
+	//TestSerach();
+	//TestPinyin();
+	//TestColor();
+	//TestJieMian();
+	//TestJieMain();
+	TestHighLight();
 	return 0;
+
 }

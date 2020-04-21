@@ -7,6 +7,7 @@
 #include <set>
 #include <thread>
 #include <windows.h>
+#include <algorithm>
 //#include <vld.h>
 #include "./sqlite3/sqlite3.h"
 #pragma comment(lib, "./sqlite3/sqlite3.lib")

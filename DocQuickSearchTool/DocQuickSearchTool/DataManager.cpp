@@ -87,7 +87,7 @@ DataManager::~DataManager()
 void DataManager::InitSqlite()
 {
 	char sql[DEFAULT_SQL_SIZE] = { 0 };
-	sprintf(sql, "create table if not exists %s(id integer primary key autoincrement,name varchar(32),path varchar(256));",DEFAULT_TABLE);
+	sprintf(sql, "create table if not exists %s(id integer primary key autoincrement,name varchar(32),path varchar(256),pinyin varchar(32),initials varchar(32));",DEFAULT_TABLE);
 	/////////////"create table test_table(id int primamy key auto_increment,name varchar(20),path varchar(100));"
 	////////////"create table test_table(id int primamy key auto_increment,name varchar(20),path varchar(100));"
 	smg.SqliteExec(sql);
@@ -95,7 +95,9 @@ void DataManager::InitSqlite()
 void DataManager::InsertDoc(const string& path, const string&doc)
 {
 	char sql[DEFAULT_SQL_SIZE] = { 0 };
-	sprintf(sql, "insert into %s values(null,'%s','%s');",DEFAULT_TABLE,doc.c_str(),path.c_str());
+	string pinyin = ChineseConvertPinYin(doc);
+	string initials = ChineseConvertInitials(doc);
+	sprintf(sql, "insert into %s values(null,'%s','%s','%s','%s');",DEFAULT_TABLE,doc.c_str(),path.c_str(),pinyin.c_str(),initials.c_str());
 	smg.SqliteExec(sql);
 }
 void DataManager::DeleteDoc(const string& path, const string&doc)
@@ -125,7 +127,9 @@ void DataManager::GetDocInfo(const string&path, set<string>&sql_set)
 void DataManager::Search(const string&key, vector<pair<string, string>>&SeaRes)
 {
 	char sql[DEFAULT_SQL_SIZE] = { 0 };
-	sprintf(sql, "select name,path from %s where name like '%%%s%%'", DEFAULT_TABLE,key.c_str());
+	string pinyin = ChineseConvertPinYin(key);
+	string initials = ChineseConvertInitials(key);
+	sprintf(sql, "select name,path from %s where pinyin like '%%%s%%' or initials like '%%%s%%'", DEFAULT_TABLE,pinyin.c_str(),initials.c_str());
 	char**result = nullptr;
 	SeaRes.clear();
 	int row = 0, col = 0;
@@ -133,5 +137,114 @@ void DataManager::Search(const string&key, vector<pair<string, string>>&SeaRes)
 	for (int i = 1; i <= row; i++)
 	{
 		SeaRes.push_back(make_pair(result[i*col],result[i*col+1]));
+	}
+}
+void DataManager::HighLight(const string& str, const string& key, string& prefix, string& highlight, string& suffix)
+{
+	string strlower = str;
+	string keylower = key;
+	transform(strlower.begin(),strlower.end(),strlower.begin(),tolower);
+	transform(keylower.begin(),keylower.end(),keylower.begin(),tolower);
+	size_t pos = strlower.find(keylower);
+	if (pos != string::npos)
+	{
+		prefix = str.substr(0,pos);//substr(size_t pos,size_t len)从pos位置分割len个字符。
+		highlight = str.substr(pos,keylower.size());
+		suffix = str.substr(pos+keylower.size());
+		return;
+	}
+	//根据拼音搜索
+	string str_pinyin = ChineseConvertPinYin(strlower);
+	string key_pinyin = ChineseConvertPinYin(keylower);
+	pos = str_pinyin.find(key_pinyin);
+	if (pos != string::npos)
+	{
+		size_t str_index = 0;
+		size_t pinyin_index = 0;
+		size_t highlight_index = 0;
+		size_t highlight_len = 0;
+		while (str_index < strlower.size())
+		{
+			if (pos == pinyin_index)
+			{
+				highlight_index = str_index;
+			}
+			if (pinyin_index >= pos + key_pinyin.size())
+			{
+				highlight_len = str_index - highlight_index;
+				break;
+			}
+			if (strlower[str_index] >= 0 && strlower[str_index] <= 127)
+			{
+				str_index++;
+				pinyin_index++;
+			}
+			else
+			{
+				string word(strlower,str_index,2);
+				string word_pinyin = ChineseConvertPinYin(word);
+				str_index += 2;
+				pinyin_index += word_pinyin.size();
+			}
+		}
+		prefix = str.substr(0,highlight_index);
+		highlight = str.substr(highlight_index,highlight_len);
+		suffix = str.substr(highlight_index+highlight_len,string::npos);
+		return;
+	}
+	string str_initials = ChineseConvertInitials(str);
+	string key_initials = ChineseConvertInitials(key);
+	pos = str_initials.find(key_initials);
+	if (pos != string::npos)
+	{
+		size_t str_index = 0;
+		size_t initials_index = 0;
+		size_t highlight_index = 0;
+		size_t highlight_len = 0;
+		while (str_index < strlower.size())
+		{
+			if (pos == initials_index)//123王怡斐123  
+				                      // 123wyf123
+			{
+				highlight_index = str_index;
+			}
+			if (initials_index >= pos + key_initials.size())
+			{
+				highlight_len = str_index - highlight_index;
+				break;
+			}
+			if (strlower[str_index] >= 0 && strlower[str_index] <= 127)
+			{
+				str_index++;
+				initials_index++;
+			}
+			else
+			{
+				str_index += 2;
+				initials_index++;
+			}
+		}
+		prefix = str.substr(0, highlight_index);
+		highlight = str.substr(highlight_index, highlight_len);
+		suffix = str.substr(highlight_index + highlight_len, string::npos);
+		return;
+	}
+	suffix = str;
+}
+
+
+
+
+//////////////////////////////////////////////////////////////
+AutoGetTableResult::AutoGetTableResult(SqliteManager* m_smg, const string&sql, int&row, int&col, char**&result) :smg(m_smg)
+{
+	smg->GetSqliteTable(sql, result, row, col);
+	m_result = result;
+}
+AutoGetTableResult::~AutoGetTableResult()
+{
+	if (m_result)
+	{
+		sqlite3_free_table(m_result);
 	}
 }
