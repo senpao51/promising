@@ -87,7 +87,7 @@ DataManager::~DataManager()
 void DataManager::InitSqlite()
 {
 	char sql[DEFAULT_SQL_SIZE] = { 0 };
-	sprintf(sql, "create table if not exists %s(id integer primary key autoincrement,name varchar(32),path varchar(256),pinyin varchar(32),initials varchar(32));",DEFAULT_TABLE);
+	sprintf(sql, "create table if not exists %s(id integer primary key autoincrement,name varchar(128),path varchar(255),pinyin varchar(32),initials varchar(32));",DEFAULT_TABLE);
 	/////////////"create table test_table(id int primamy key auto_increment,name varchar(20),path varchar(100));"
 	////////////"create table test_table(id int primamy key auto_increment,name varchar(20),path varchar(100));"
 	smg.SqliteExec(sql);
@@ -203,8 +203,7 @@ void DataManager::HighLight(const string& str, const string& key, string& prefix
 		size_t highlight_len = 0;
 		while (str_index < strlower.size())
 		{
-			if (pos == initials_index)//123Íõâùì³123  
-				                      // 123wyf123
+			if (pos == initials_index)
 			{
 				highlight_index = str_index;
 			}

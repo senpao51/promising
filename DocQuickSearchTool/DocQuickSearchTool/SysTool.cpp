@@ -12,6 +12,8 @@ void DirectoryAdd(const string &path, vector<string>&subdir, vector<string>&subf
 	}
 	do
 	{
+		if (filedata.attrib&_A_SYSTEM)
+			continue;
 		if (strcmp(filedata.name, ".") == 0 || strcmp(filedata.name, "..")==0)
 			continue;
 		if (filedata.attrib & _A_SUBDIR)
@@ -182,7 +184,6 @@ void ColourPrintf(const char* str)
 	//颜色：前景色 + 背景色*0x10
 	//例如：字是红色，背景色是白色，即 红色 + 亮白 = 4 + 15*0x10
 	//WORD color = 4 + 15 * 0x10;
-
 	WORD color = 2 + 0 * 0x10;
 	WORD colorOld;
 	HANDLE handle = ::GetStdHandle(STD_OUTPUT_HANDLE);
@@ -192,4 +193,19 @@ void ColourPrintf(const char* str)
 	SetConsoleTextAttribute(handle, color);
 	printf("%s", str);
 	SetConsoleTextAttribute(handle, colorOld);
+}
+
+
+void GetAllDisk(vector<string>&Disk)
+{
+	DWORD dwLen = GetLogicalDriveStrings(0, NULL);//获取系统盘符字符串长度
+	char *pszDriver = new char[dwLen];//构建字符数组
+	GetLogicalDriveStrings(dwLen, pszDriver);//获取系统盘符字符串
+	char* pDriver = pszDriver;
+	while (*pDriver != '\0')
+	{
+		Disk.push_back(pDriver);
+		pDriver += strlen(pDriver) + 1;//定位到下一个字符串，加1是为了跳过\0字符
+	}
+	delete[] pszDriver;
 }

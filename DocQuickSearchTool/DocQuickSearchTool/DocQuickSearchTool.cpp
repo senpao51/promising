@@ -76,18 +76,81 @@ void TestHighLight()
 	ColourPrintf(highlight.c_str());
 	cout << suffix << endl;
 }
+void Test(vector<string>&path)
+{
+	TCHAR szBuf[100];
+	memset(szBuf, 0, 100);
+
+	DWORD len = GetLogicalDriveStrings(sizeof(szBuf) / sizeof(TCHAR), szBuf);
+
+	for (TCHAR * s = szBuf; *s; s +=strlen(s) + 1)
+	{
+		LPCTSTR sDrivePath = s;
+		path.push_back(s);
+	}
+	Sleep(2000);
+}
+
+void menu()
+{
+	printf("                                              ");
+	printf("*******************************************************\n");
+	printf("                                              ");
+	printf("**                     1.查询                        **\n");
+	printf("                                              ");
+	printf("**                     0.exit                        **\n");
+	printf("                                              ");
+	printf("*******************************************************\n");
+
+}
+void TestPro()
+{
+	vector<string>Disk;
+	GetAllDisk(Disk);
+	//for (int i = 3; i < Disk.size(); i++)
+	//{
+		//string path(Disk[i].begin(),Disk[i].begin()+2);
+		string path = "E:";
+		cout << "请稍等，正在加载文件:)" << endl;
+		ScanManager& sm = ScanManager::GetScanManagerInstance(path);
+		sm.ScanDirectory(path);
+	//}
+		DataManager& dm = DataManager::GetDataManagerInstance();
+		string name;
+		cout << "请输入:";
+		cin >> name;
+		vector<pair<string, string>>v;
+		dm.Search(name, v);
+		printf("%-75s %-75s\n", "名字", "路径");
+		for (const auto&e : v)
+		{
+			printf("%-75s %-75s\n", e.first.c_str(), e.second.c_str());
+		}
+		printf("\n");
+}
 int main()
 {
-	//TestSqlite();
-	//TestScanManager();
-	//TestDataManager();
-	//TestScanManager();
-	//TestSerach();
-	//TestPinyin();
-	//TestColor();
-	//TestJieMian();
-	//TestJieMain();
-	TestHighLight();
+	while (1)
+	{
+		bool flag = false;
+		int input;
+		menu();
+		cout << "请选择:";
+		cin >> input;
+		switch (input)
+		{
+		case 1:
+			TestPro();
+			break;
+		case 0:
+			flag = true;
+			break;
+		default:
+			cout << "输入错误，请重新输入:)" << endl;
+			break;
+		}
+		if (flag)
+			break;
+	}
 	return 0;
-
 }
