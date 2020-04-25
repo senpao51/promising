@@ -87,9 +87,7 @@ DataManager::~DataManager()
 void DataManager::InitSqlite()
 {
 	char sql[DEFAULT_SQL_SIZE] = { 0 };
-	sprintf(sql, "create table if not exists %s(id integer primary key autoincrement,name varchar(128),path varchar(255),pinyin varchar(32),initials varchar(32));",DEFAULT_TABLE);
-	/////////////"create table test_table(id int primamy key auto_increment,name varchar(20),path varchar(100));"
-	////////////"create table test_table(id int primamy key auto_increment,name varchar(20),path varchar(100));"
+	sprintf(sql, "create table if not exists %s(id integer primary key autoincrement,name text,path text,pinyin text,initials text);",DEFAULT_TABLE);
 	smg.SqliteExec(sql);
 }
 void DataManager::InsertDoc(const string& path, const string&doc)

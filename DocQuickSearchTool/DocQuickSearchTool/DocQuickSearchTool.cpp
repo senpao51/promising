@@ -128,6 +128,7 @@ void TestPro()
 		}
 		printf("\n");
 }
+
 int main()
 {
 	while (1)
@@ -154,3 +155,14 @@ int main()
 	}
 	return 0;
 }
+void TestFile()
+{
+	string path = "E:";
+	ScanManager& sm = ScanManager::GetScanManagerInstance(path);
+	sm.ScanDirectory(path);
+	DataManager& dm = DataManager::GetDataManagerInstance();
+}
+//void main()
+//{
+//	TestFile();
+//}
