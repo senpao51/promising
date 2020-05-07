@@ -10,7 +10,7 @@ class AVLTree;
 template<typename T>
 class AVLNode
 {
-	friend AVLTree<T>;
+	friend class AVLTree<T>;
 public:
 	AVLNode(const T&val = T(), AVLNode<T>*_left = nullptr, AVLNode<T>*_right = nullptr)
 		:data(val), left(_left), right(_right), bf(0)
@@ -47,34 +47,89 @@ bool AVLTree<T>::Insert(AVLNode<T>*&t, const T&val)
 	stack<AVLNode<T>*>st;
 	while (p != nullptr)
 	{
-		pr = p;
-		st.push(pr);
+		if (val == p->data)
+			return false;
+		ptr = p;
+		st.push(ptr);
 		if (p->data > val)
 			p = p->left;
 		else
 			p = p->right;
 	}
-	p = new AVLNode(val);
+	p = new AVLNode<T>(val);
 	if (ptr == nullptr)
 	{
 		t = p;
 		return true;
 	}
+	if (ptr->data > val)
+		ptr->left = p;
+	else
+		ptr->right = p;
 	while (!st.empty())
 	{
 		ptr = st.top();
 		st.pop();
-		if (ptr->data > p->data)
-			ptr->bf++;
-		else if (ptr->data < p->data)
+		if (p = ptr->left)
 			ptr->bf--;
+		else
+			ptr->bf++;
 		if (ptr->bf == 0)
 			break;
+		else if (ptr->bf == 1 || ptr->bf == -1)
+			p = ptr;
+		else
+		{
+			if (ptr->bf > 0)
+			{
+				if (p->bf > 0)
+				{
+					//左单旋        \\     /
 
+					cout << "RotateL" << endl;
+				}
+				else
+				{
+					//先右后左       >
+					cout << "RotateRL" << endl;
+
+				}
+			}
+			else
+			{
+				if (p->bf > 0)
+				{
+					//先左后右      <
+					cout << "RotateLR" << endl;
+
+				}
+				else
+				{
+					//右单旋        /
+					cout << "RotateR" << endl;
+
+				}
+			}
+			break;
+		}
 	}
+	if (st.empty())
+		t = ptr;
+	else
+	{
+		AVLNode<T>*pptr = st.top();
+		if (pptr->data > ptr->data)
+			pptr->left = ptr;
+		else
+			pptr->right = ptr;
+	}
+	return true;
 }
 int main()
 {
+	vector<int>v = {3,7,10};
 	AVLTree<int>avl;
+	for (const auto&e : v)
+		avl.Insert(e);
 	return 0;
 }
