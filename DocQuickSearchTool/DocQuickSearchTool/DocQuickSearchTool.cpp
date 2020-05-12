@@ -80,9 +80,7 @@ void Test(vector<string>&path)
 {
 	TCHAR szBuf[100];
 	memset(szBuf, 0, 100);
-
 	DWORD len = GetLogicalDriveStrings(sizeof(szBuf) / sizeof(TCHAR), szBuf);
-
 	for (TCHAR * s = szBuf; *s; s +=strlen(s) + 1)
 	{
 		LPCTSTR sDrivePath = s;
