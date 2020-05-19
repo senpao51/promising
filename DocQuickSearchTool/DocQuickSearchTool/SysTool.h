@@ -9,9 +9,14 @@ void DirectoryAdd(const string &path, vector<string>&subdir, vector<string>&subf
 /////////////////////////////////////////////////////////////////////////////////////
 
 string ChineseConvertPinYin(const string& dest_chinese);//汉字转拼音
+
+
 string ChineseConvertInitials(const string& name);//汉字转首字母
+
 void ColourPrintf(const char* str);//字符高亮
+
 void GetAllDisk(vector<string>&Disk);//获取电脑所有盘符
+
 //日志
 #ifndef __TRACE__
 //#define __TRACE__
