@@ -9,7 +9,6 @@
 #include <windows.h>
 #include <algorithm>
 #include <tchar.h>  
-//#include <vld.h>
 #include "./sqlite3/sqlite3.h"
 #pragma comment(lib, "./sqlite3/sqlite3.lib")
 using namespace std;
