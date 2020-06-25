@@ -180,7 +180,6 @@ private:
 template<class Type>
 bool RBTree<Type>::Insert(RBTreeNode<Type> *&t, const Type &x)
 {
-	//1 根据bst的规则插入数据
 	RBTreeNode<Type> *pr = NIL;
 	RBTreeNode<Type> *s = t;
 	while (s != NIL)
@@ -206,7 +205,6 @@ bool RBTree<Type>::Insert(RBTreeNode<Type> *&t, const Type &x)
 		pr->rightChild = s;
 	s->parent = pr;
 
-	//2 调整平衡
 	Insert_Fixup(t, s);
 	return true;
 }
