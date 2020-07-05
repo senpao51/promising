@@ -14,7 +14,7 @@ ScanManager& ScanManager::GetScanManagerInstance(const string&path)
 {
 	static ScanManager smg;
 	thread scan_inst(&StartScan,&smg,path);
-	scan_inst.detach();//与主线程分离
+	scan_inst.detach();
 	return smg;
 }
 ScanManager::ScanManager()
