@@ -124,6 +124,5 @@ int main()
 	cout << endl;
 	bst.Delete(3);
 	bst.Inorder();
-	cout << endl;
 	return 0;
 }
