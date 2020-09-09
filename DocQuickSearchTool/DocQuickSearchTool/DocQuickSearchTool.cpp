@@ -91,40 +91,31 @@ void Test(vector<string>&path)
 
 void menu()
 {
-	printf("                                              ");
-	printf("*******************************************************\n");
-	printf("                                              ");
-	printf("**                     1.查询                        **\n");
-	printf("                                              ");
-	printf("**                     0.exit                        **\n");
-	printf("                                              ");
-	printf("*******************************************************\n");
-
+	printf("****************************************************************************************************************************************************************");
+	printf("***                                                                                   1.查询                                                                 ***");
+	printf("***                                                                                   0.exit                                                                 ***");
+	printf("****************************************************************************************************************************************************************");
 }
-void TestPro()
+void DiskMod()//磁盘模块
 {
 	vector<string>Disk;
-	GetAllDisk(Disk);
-	//for (int i = 3; i < Disk.size(); i++)
-	//{
-		//string path(Disk[i].begin(),Disk[i].begin()+2);
-		string path = "E:";
-		cout << "请稍等，正在加载文件:)" << endl;
-		ScanManager& sm = ScanManager::GetScanManagerInstance(path);
-		sm.ScanDirectory(path);
-	//}
-		DataManager& dm = DataManager::GetDataManagerInstance();
-		string name;
-		cout << "请输入:";
-		cin >> name;
-		vector<pair<string, string>>v;
-		dm.Search(name, v);
-		printf("%-75s %-75s\n", "名字", "路径");
-		for (const auto&e : v)
-		{
-			printf("%-75s %-75s\n", e.first.c_str(), e.second.c_str());
-		}
-		printf("\n");
+	//GetAllDisk(Disk);
+	string path = "E:";
+	cout << "请稍等，正在加载文件:)" << endl;
+	ScanManager& sm = ScanManager::GetScanManagerInstance(path);
+	sm.ScanDirectory(path);
+	DataManager& dm = DataManager::GetDataManagerInstance();
+	string name;
+	cout << "请输入:";
+	cin >> name;
+	vector<pair<string, string>>v;
+	dm.Search(name, v);
+	printf("%-78s %-78s\n", "名字", "路径");
+	for (const auto&e : v)
+	{
+		printf("%-78s %-78s\n", e.first.c_str(), e.second.c_str());
+	}
+	printf("\n");
 }
 
 int main()
@@ -135,32 +126,25 @@ int main()
 		int input;
 		menu();
 		cout << "请选择:";
-		cin >> input;
+		scanf("%d",&input);
 		switch (input)
 		{
 		case 1:
-			TestPro();
+			DiskMod();
 			break;
 		case 0:
 			flag = true;
 			break;
 		default:
-			cout << "输入错误，请重新输入:)" << endl;
-			break;
+			{
+				cout << "输入错误,按任意键退出" << endl;
+				flag = true;
+				break;
+			}
 		}
 		if (flag)
 			break;
 	}
 	return 0;
 }
-void TestFile()
-{
-	string path = "E:";
-	ScanManager& sm = ScanManager::GetScanManagerInstance(path);
-	sm.ScanDirectory(path);
-	DataManager& dm = DataManager::GetDataManagerInstance();
-}
-//void main()
-//{
-//	TestFile();
-//}
+
