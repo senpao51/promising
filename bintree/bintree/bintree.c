@@ -170,21 +170,25 @@ void PreOrder(BinTree* t)
 //Ç°Ðò(·ÇµÝ¹é)
 void _PreOrderNr(BinTreeNode* t)
 {
+	//if (t != NULL)
+	//{
+	//	SeqStack st;
+	//	SeqStackInit(&st, _DEAFAULT_QUEUE_SIZE);
+	//	SeqStackPush(&st,t);
+	//	while (!SeqStackIsEmpty(&st))
+	//	{
+	//		BinTreeNode* p = SeqStackPeepTop(&st);
+	//		printf("%c ", p->data);
+	//		SeqStackPop(&st);
+	//		if (p->rightchild!=NULL)
+	//			SeqStackPush(&st, p->rightchild);
+	//		if (p->leftchild!=NULL)
+	//			SeqStackPush(&st, p->leftchild);
+	//	}
+	//}
 	if (t != NULL)
 	{
-		SeqStack st;
-		SeqStackInit(&st, _DEAFAULT_QUEUE_SIZE);
-		SeqStackPush(&st,t);
-		while (!SeqStackIsEmpty(&st))
-		{
-			BinTreeNode* p = SeqStackPeepTop(&st);
-			printf("%c ", p->data);
-			SeqStackPop(&st);
-			if (p->rightchild!=NULL)
-				SeqStackPush(&st, p->rightchild);
-			if (p->leftchild!=NULL)
-				SeqStackPush(&st, p->leftchild);
-		}
+
 	}
 }
 void PreOrderNr(BinTree* t)

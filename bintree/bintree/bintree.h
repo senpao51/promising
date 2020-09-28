@@ -9,7 +9,6 @@
 
 
 
-
 #define DataType char
 #define _DEAFAULT_QUEUE_SIZE 30
 typedef struct BinTreeNode
